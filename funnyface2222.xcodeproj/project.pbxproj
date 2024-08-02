@@ -13,7 +13,11 @@
 		B710440E2C53B5340093FDFE /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B71044082C53B5340093FDFE /* Quicksand-Regular.ttf */; };
 		B710440F2C53B5340093FDFE /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B71044092C53B5340093FDFE /* Quicksand-SemiBold.ttf */; };
 		B71044112C53BB360093FDFE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71044102C53BB360093FDFE /* Fonts.swift */; };
+		B7377FC22C5CDC28002E45B8 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */; };
+		B7377FC32C5CDC28002E45B8 /* ProfileSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */; };
 		B75C30692C53D19C00B60DB2 /* Starborn.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B75C30662C53D19C00B60DB2 /* Starborn.ttf */; };
+		B7F645392C5CCB4700261A02 /* ListToProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F645382C5CCB4700261A02 /* ListToProfileViewController.xib */; };
+		B7F6453A2C5CCB4700261A02 /* ListToProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F645372C5CCB4700261A02 /* ListToProfileViewController.swift */; };
 		CE4311AC50DD594411F5C51F /* Pods_funnyface2222.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A400DC692F4EF37497AE5 /* Pods_funnyface2222.framework */; };
 		E6111ECB2B68E58500BD49AA /* newtemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6111EC92B68E58500BD49AA /* newtemplate.swift */; };
 		E6111ECC2B68E58500BD49AA /* newtemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6111ECA2B68E58500BD49AA /* newtemplate.xib */; };
@@ -216,7 +220,11 @@
 		B71044082C53B5340093FDFE /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
 		B71044092C53B5340093FDFE /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
 		B71044102C53BB360093FDFE /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
+		B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingViewController.xib; sourceTree = "<group>"; };
 		B75C30662C53D19C00B60DB2 /* Starborn.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Starborn.ttf; sourceTree = "<group>"; };
+		B7F645372C5CCB4700261A02 /* ListToProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListToProfileViewController.swift; sourceTree = "<group>"; };
+		B7F645382C5CCB4700261A02 /* ListToProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListToProfileViewController.xib; sourceTree = "<group>"; };
 		CB3A400DC692F4EF37497AE5 /* Pods_funnyface2222.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funnyface2222.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6111EC92B68E58500BD49AA /* newtemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newtemplate.swift; sourceTree = "<group>"; };
 		E6111ECA2B68E58500BD49AA /* newtemplate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = newtemplate.xib; sourceTree = "<group>"; };
@@ -881,6 +889,10 @@
 			children = (
 				E66C93952B4E559600B74491 /* ProfileViewController.xib */,
 				E66C939F2B4E559600B74491 /* ProfileViewController.swift */,
+				B7F645372C5CCB4700261A02 /* ListToProfileViewController.swift */,
+				B7F645382C5CCB4700261A02 /* ListToProfileViewController.xib */,
+				B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */,
+				B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */,
 				E66C938F2B4E559600B74491 /* Profile */,
 				E6EB4E1E2B970527002E87A7 /* ChangePassController.swift */,
 				E6EB4E1F2B970527002E87A7 /* ChangePassController.xib */,
@@ -1301,6 +1313,7 @@
 				E66C92E32B4E52EF00B74491 /* LaunchScreen.storyboard in Resources */,
 				E6EB4E212B970527002E87A7 /* ChangePassController.xib in Resources */,
 				E64E47C22B5E5147007DDAD0 /* newVideo2.xib in Resources */,
+				B7377FC32C5CDC28002E45B8 /* ProfileSettingViewController.xib in Resources */,
 				E66C93F22B4E559600B74491 /* ChangerAvatarViewController.xib in Resources */,
 				E68D67272B5F9FCE00E410FC /* hightlightmain.xib in Resources */,
 				E676F5D92B60FDA300C96049 /* celleventduoi.xib in Resources */,
@@ -1348,6 +1361,7 @@
 				E67BE0302B8599DC00FF559C /* babycenter.xib in Resources */,
 				B710440C2C53B5340093FDFE /* Quicksand-Light.ttf in Resources */,
 				E66C93F42B4E559600B74491 /* ProfileViewController.xib in Resources */,
+				B7F645392C5CCB4700261A02 /* ListToProfileViewController.xib in Resources */,
 				E66C93F52B4E559600B74491 /* RecentCommentTableViewCell.xib in Resources */,
 				E66C93CB2B4E559600B74491 /* mhchinh.storyboard in Resources */,
 				E6B88CB32B4FED0F005A02E6 /* testnhay.mp4 in Resources */,
@@ -1434,6 +1448,7 @@
 				E66C92F82B4E554000B74491 /* Template3TBVCell.swift in Sources */,
 				E66C93272B4E556A00B74491 /* HomeAPI.swift in Sources */,
 				E66C93F82B4E559600B74491 /* UserEventViewController.swift in Sources */,
+				B7377FC22C5CDC28002E45B8 /* ProfileSettingViewController.swift in Sources */,
 				E68D67262B5F9FCE00E410FC /* hightlightmain.swift in Sources */,
 				E64E478E2B5A7112007DDAD0 /* VideoCellCollectionViewCell.swift in Sources */,
 				E66C93E52B4E559600B74491 /* ListImageOldVC.swift in Sources */,
@@ -1472,6 +1487,7 @@
 				E64E47842B5A52DA007DDAD0 /* contentView.swift in Sources */,
 				E64E47872B5A5AD1007DDAD0 /* ActionSheets.swift in Sources */,
 				E64E478A2B5A6BC5007DDAD0 /* AlbumvideoController.swift in Sources */,
+				B7F6453A2C5CCB4700261A02 /* ListToProfileViewController.swift in Sources */,
 				E66C93532B4E558700B74491 /* BaseService.swift in Sources */,
 				E66C932A2B4E557200B74491 /* APIKeyIMGBB.swift in Sources */,
 				E66706A42B678E5600CDF9EC /* EventView.swift in Sources */,

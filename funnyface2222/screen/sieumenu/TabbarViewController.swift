@@ -12,7 +12,7 @@ var mainTabbar:testViewController!
 
 
 class TabbarViewController: SETabViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,8 +28,8 @@ class TabbarViewController: SETabViewController {
     }
     
     private func getViewControllers() -> [UIViewController] {
-       
-           
+        
+        
         let storyboard = UIStoryboard(name: "HomeStaboad", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "HomeMainView") as! HomeMainView
         
@@ -37,24 +37,27 @@ class TabbarViewController: SETabViewController {
         let controller3 = storyboardd.instantiateViewController(withIdentifier: "testViewController") as! testViewController
         mainTabbar = controller3
         let controller2 = storyboardd.instantiateViewController(withIdentifier: "mhtestViewController") as! mhtestViewController
-    let controller4 = ProfileViewController()
+//        let controller4 = ProfileViewController()
+        let controller4 = ListToProfileViewController()
         controller4.userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
-        ProfileViewController().userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
-           return [
+        ListToProfileViewController().userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
+        ProfileSettingViewController().userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
+//        ProfileViewController().userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
+        return [
             controller,
             controller3,
             controller2,
             CommentsViewController(),
             controller4
-           ]
-//        return [
-//            let storyboard = UIStoryboard(name: "mainpage", bundle: nil)
-//            HomeMainView(nibName: "HomeMainView", bundle: nil),
-//            mhtestViewController(nibName: "mhtestViewController", bundle: nil),
-//            CommentsViewController(nibName: "CommentsViewController", bundle: nil),
-//            LoveViewController(nibName: "LoveViewController", bundle: nil),
-//        ]
+        ]
+        //        return [
+        //            let storyboard = UIStoryboard(name: "mainpage", bundle: nil)
+        //            HomeMainView(nibName: "HomeMainView", bundle: nil),
+        //            mhtestViewController(nibName: "mhtestViewController", bundle: nil),
+        //            CommentsViewController(nibName: "CommentsViewController", bundle: nil),
+        //            LoveViewController(nibName: "LoveViewController", bundle: nil),
+        //        ]
     }
-
-
+    
+    
 }
