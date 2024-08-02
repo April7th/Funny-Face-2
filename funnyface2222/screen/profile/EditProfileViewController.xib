@@ -120,22 +120,12 @@
                                 <constraint firstItem="Vdk-Ci-yk1" firstAttribute="centerY" secondItem="ux4-iw-bLN" secondAttribute="centerY" id="U6u-nH-gs9"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTH-vc-rYZ">
-                            <rect key="frame" x="228.66666666666666" y="97" width="47.999999999999972" height="38"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="Frame 48097714"/>
-                            <connections>
-                                <action selector="changeAVATR:" destination="-1" eventType="touchDown" id="92n-DP-ujN"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="ux4-iw-bLN" firstAttribute="leading" secondItem="Jfw-gH-FLe" secondAttribute="leading" id="CRQ-vi-Tlz"/>
-                        <constraint firstItem="TTH-vc-rYZ" firstAttribute="bottom" secondItem="Rhj-iV-PNn" secondAttribute="bottom" constant="15" id="D9l-yF-lgF"/>
                         <constraint firstAttribute="trailing" secondItem="ux4-iw-bLN" secondAttribute="trailing" id="Fp5-XR-8Qq"/>
                         <constraint firstItem="ZQN-ac-h1o" firstAttribute="top" secondItem="s8y-Y8-YXR" secondAttribute="bottom" constant="20" id="GNq-k9-gSV"/>
-                        <constraint firstItem="TTH-vc-rYZ" firstAttribute="trailing" secondItem="Rhj-iV-PNn" secondAttribute="trailing" constant="20" id="KBm-Ks-tgo"/>
                         <constraint firstItem="Rhj-iV-PNn" firstAttribute="top" secondItem="Jfw-gH-FLe" secondAttribute="top" id="MWE-t4-vVe"/>
                         <constraint firstItem="ux4-iw-bLN" firstAttribute="top" secondItem="s8y-Y8-YXR" secondAttribute="bottom" constant="40" id="PCY-ja-7PU"/>
                         <constraint firstAttribute="height" constant="234" id="R8L-cq-Pu9"/>
@@ -164,7 +154,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Frame 48097714" width="24" height="24"/>
         <image name="arrow-left" width="24" height="24.333333969116211"/>
     </resources>
 </document>

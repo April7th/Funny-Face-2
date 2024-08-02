@@ -93,14 +93,19 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
     }
     
     @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: false)
-        self.dismiss(animated: true)
+//        self.navigationController?.popToRootViewController(animated: false)
+//        self.dismiss(animated: true)
+        
+        let vc = ListToProfileViewController(nibName: "ListToProfileViewController", bundle: nil)
+        vc.userId = self.userId
+        //vc.data = self.dataUserEvent
+        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func editButton(_ sender: Any) {
         let vc = EditProfileViewController(nibName: "EditProfileViewController", bundle: nil)
         vc.userId = self.userId
-        vc.boyImage = self.avatarImage
         //vc.data = self.dataUserEvent
         vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
         self.present(vc, animated: true, completion: nil)
@@ -132,6 +137,7 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
                         |> RoundCornerImageProcessor(cornerRadius: 50)
                         self.avatarImage.kf.indicatorType = .activity
                         self.avatarImage.backgroundColor = .clear
+                        self.avatarImage.contentMode = .scaleAspectFill
                         self.avatarImage.kf.setImage(
                             with: url,
                             placeholder: UIImage(named: "placeholderImage"),

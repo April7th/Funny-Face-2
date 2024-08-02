@@ -17,6 +17,74 @@ class ChangePassController: BaseViewController {
     @IBOutlet weak var hienpassnewagain: UIButton!
     @IBOutlet weak var errorMessageLabel: UILabel!
     
+    @IBOutlet weak var oldPassView: UIView!
+    @IBOutlet weak var newPassView: UIView!
+    @IBOutlet weak var reEnterPassView: UIView!
+    
+    @IBOutlet weak var oldPassLabel: UILabel!
+    @IBOutlet weak var newPassLabel: UILabel!
+    @IBOutlet weak var reEnterPassLabel: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+
+
+
+
+    
+    
+    private func setupUIChangePas() {
+        
+        oldPassLabel.font = .quickSandBold(size: 20)
+        oldPassLabel.text = "Old Pass"
+        newPassLabel.font = .quickSandBold(size: 20)
+        newPassLabel.text = "New Pass"
+        reEnterPassLabel.font = .quickSandBold(size: 20)
+        reEnterPassLabel.text = "New Pass Again"
+        
+        confirmButton.titleLabel?.font = .quickSandBold(size: 16)
+        confirmButton.layer.cornerRadius = 10
+        confirmButton.layer.masksToBounds = true
+        
+        backButton.titleLabel?.font = .quickSandBold(size: 14)
+        backButton.layer.cornerRadius = 10
+        backButton.layer.masksToBounds = true
+
+        
+        
+        oldPassView.layer.borderWidth = 1
+        oldPassView.layer.borderColor = UIColor.gray.cgColor
+        oldPassView.layer.cornerRadius = 10
+        
+        newPassView.layer.borderWidth = 1
+        newPassView.layer.borderColor = UIColor.gray.cgColor
+        newPassView.layer.cornerRadius = 10
+        
+        reEnterPassView.layer.borderWidth = 1
+        reEnterPassView.layer.borderColor = UIColor.gray.cgColor
+        reEnterPassView.layer.cornerRadius = 10
+        
+        passs.attributedPlaceholder = NSAttributedString(
+            string: "Enter old password",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.quickSandSemiBold(size: 16)]
+        )
+        passs.textColor = .white
+        passs.font = .quickSandSemiBold(size: 16)
+        
+        newpass.attributedPlaceholder = NSAttributedString(
+            string: "Enter new password",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.quickSandSemiBold(size: 16)]
+        )
+        newpass.textColor = .white
+        newpass.font = .quickSandSemiBold(size: 16)
+        
+        newpassagain.attributedPlaceholder = NSAttributedString(
+            string: "Enter new password again",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.quickSandSemiBold(size: 16)]
+        )
+        newpassagain.textColor = .white
+        newpassagain.font = .quickSandSemiBold(size: 16)
+    }
+    
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: false)
         self.dismiss(animated: true)
@@ -120,8 +188,10 @@ class ChangePassController: BaseViewController {
         hienpassnew.setTitle("", for: .normal)
         hienpassnewagain.setTitle("", for: .normal)
         // Do any additional setup after loading the view.
+        setupUIChangePas()
     }
 
+  
 
     
 

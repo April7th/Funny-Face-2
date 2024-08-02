@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,13 +11,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangePassController" customModule="funnyface2222" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="uam-NB-VtK" id="b5n-RA-pxH"/>
+                <outlet property="confirmButton" destination="D8j-Bd-bcf" id="H4S-gb-xYT"/>
                 <outlet property="errorMessageLabel" destination="d6O-F8-tww" id="RFX-2P-bng"/>
                 <outlet property="hienpass" destination="i1y-rY-uKA" id="Zwx-9Y-Cq2"/>
                 <outlet property="hienpassnew" destination="CpD-Fe-P7G" id="ygT-eK-P0D"/>
                 <outlet property="hienpassnewagain" destination="cEv-hQ-wX0" id="Bhn-4y-Qeg"/>
+                <outlet property="newPassLabel" destination="M1f-Tt-rl9" id="iDT-Gw-drr"/>
+                <outlet property="newPassView" destination="inN-cD-InN" id="iIm-4T-q2f"/>
                 <outlet property="newpass" destination="v9I-gY-GMz" id="sKq-cb-PDK"/>
                 <outlet property="newpassagain" destination="OYu-y6-hmU" id="xHV-W8-OKt"/>
+                <outlet property="oldPassLabel" destination="6Tx-eA-ii8" id="unD-TR-6UT"/>
+                <outlet property="oldPassView" destination="b8f-zu-jeU" id="knW-Le-ffn"/>
                 <outlet property="passs" destination="LBZ-2l-d0b" id="wbs-cH-YH0"/>
+                <outlet property="reEnterPassLabel" destination="goc-He-MyT" id="X6S-I1-1OQ"/>
+                <outlet property="reEnterPassView" destination="ErH-e7-3nP" id="o6v-xL-eUa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -49,21 +57,23 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8f-zu-jeU">
                     <rect key="frame" x="16" y="254" width="361" height="53"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="old pass.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LBZ-2l-d0b">
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="old pass.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LBZ-2l-d0b">
                             <rect key="frame" x="10" y="0.0" width="274" height="53"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1y-rY-uKA">
                             <rect key="frame" x="284" y="0.0" width="77" height="53"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="Group 48096951"/>
+                            <buttonConfiguration key="configuration" style="plain" image="eye-slash"/>
                             <connections>
                                 <action selector="actionBtnHiden:" destination="-1" eventType="touchDown" id="ez4-ni-qda"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="i1y-rY-uKA" firstAttribute="top" secondItem="b8f-zu-jeU" secondAttribute="top" id="DbG-5f-1He"/>
                         <constraint firstAttribute="bottom" secondItem="LBZ-2l-d0b" secondAttribute="bottom" id="Gtw-82-nUu"/>
@@ -86,19 +96,20 @@
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new pass.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v9I-gY-GMz">
                             <rect key="frame" x="8" y="0.0" width="274" height="49"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CpD-Fe-P7G">
                             <rect key="frame" x="282" y="0.0" width="79" height="49"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="Group 48096951"/>
+                            <buttonConfiguration key="configuration" style="plain" image="eye-slash"/>
                             <connections>
                                 <action selector="actionBtnHiden2:" destination="-1" eventType="touchDown" id="LGN-Ij-pYC"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="v9I-gY-GMz" secondAttribute="bottom" id="A7L-rt-bjf"/>
                         <constraint firstAttribute="trailing" secondItem="CpD-Fe-P7G" secondAttribute="trailing" id="Ga2-6H-uwK"/>
@@ -122,19 +133,20 @@
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new pass again.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYu-y6-hmU">
                             <rect key="frame" x="8" y="0.0" width="273" height="54"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEv-hQ-wX0">
                             <rect key="frame" x="281" y="0.0" width="80" height="54"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="Group 48096951"/>
+                            <buttonConfiguration key="configuration" style="plain" image="eye-slash"/>
                             <connections>
                                 <action selector="actionBtnHiden3:" destination="-1" eventType="touchDown" id="HZC-6t-GZi"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="cEv-hQ-wX0" firstAttribute="leading" secondItem="OYu-y6-hmU" secondAttribute="trailing" id="8mV-2g-0Ff"/>
                         <constraint firstAttribute="bottom" secondItem="OYu-y6-hmU" secondAttribute="bottom" id="F73-77-otC"/>
@@ -147,14 +159,13 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8j-Bd-bcf">
-                    <rect key="frame" x="82" y="669" width="229" height="58"/>
-                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    <rect key="frame" x="39.333333333333343" y="669" width="314.33333333333326" height="48"/>
+                    <color key="backgroundColor" red="0.1137254902" green="0.72549019609999998" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="229" id="gel-7w-m2z"/>
-                        <constraint firstAttribute="height" constant="58" id="laU-X4-7ei"/>
+                        <constraint firstAttribute="height" constant="48" id="laU-X4-7ei"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="xác nhận">
+                    <buttonConfiguration key="configuration" style="plain" title="Confirm new pass">
                         <color key="baseForegroundColor" systemColor="systemGray6Color"/>
                     </buttonConfiguration>
                     <connections>
@@ -162,17 +173,22 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uam-NB-VtK">
-                    <rect key="frame" x="300" y="750" width="61" height="35"/>
+                    <rect key="frame" x="281" y="740" width="80" height="30"/>
+                    <color key="backgroundColor" red="0.1137254902" green="0.72549019609999998" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="6Gb-Ry-jwU"/>
+                        <constraint firstAttribute="width" constant="80" id="QhW-y2-ucd"/>
+                    </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="back">
-                        <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Back">
+                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </buttonConfiguration>
                     <connections>
                         <action selector="backBtn:" destination="-1" eventType="touchDown" id="zme-Gh-x33"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6O-F8-tww">
-                    <rect key="frame" x="82" y="757" width="185" height="21"/>
+                    <rect key="frame" x="39.333333333333343" y="747" width="185" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" systemColor="systemRedColor"/>
                     <nil key="highlightedColor"/>
@@ -192,6 +208,7 @@
                 <constraint firstItem="6Tx-eA-ii8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="BbU-ia-Vbx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Tx-eA-ii8" secondAttribute="trailing" id="FWf-4a-gCI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="M1f-Tt-rl9" secondAttribute="trailing" constant="16" id="GxR-E2-Yab"/>
+                <constraint firstItem="D8j-Bd-bcf" firstAttribute="width" secondItem="SNw-qa-jMQ" secondAttribute="width" multiplier="0.8" id="Hp3-s2-SaP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="goc-He-MyT" secondAttribute="trailing" constant="16" id="Hq8-jS-sFw"/>
                 <constraint firstItem="inN-cD-InN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="JYC-Ae-IMy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SNw-qa-jMQ" secondAttribute="trailing" id="Mjk-zt-MQL"/>
@@ -222,19 +239,13 @@
         </view>
     </objects>
     <resources>
-        <image name="Group 48096951" width="16" height="16.333333969116211"/>
+        <image name="eye-slash" width="24" height="24"/>
         <image name="logohome" width="159" height="20.666666030883789"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

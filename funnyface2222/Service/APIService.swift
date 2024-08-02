@@ -1011,9 +1011,25 @@ class APIService:NSObject {
         closure(nil, nil)
     }
     
+//    func getEventsAPI(linkNam: String, linkNu: String,device: String, ip: String, Id: String, tennam:String,tennu:String, closure: @escaping (_ response: LoveModel?, _ error: Error?) -> Void) {
+//        if let linkDevice = device.urlEncoded,let tenNamLink = tennam.urlEncoded,let tenNuLink = tennu.urlEncoded{
+//            requestTokenFolderGhepDoi("https://thinkdiff.us/getdata?device_them_su_kien=\(linkDevice)&ip_them_su_kien=\(ip)&id_user=\(Id)&ten_nam=\(tenNamLink)&ten_nu=\(tenNuLink)", linkNam: linkNam,linkNu: linkNu, param: nil, method: .GET, loading: true) { (data, error) in
+//                if let data = data as? [String:Any]{
+//                    var returnData: LoveModel = LoveModel()
+//                    returnData = returnData.initLoad(data)
+//                    closure(returnData,nil)
+//                }else{
+//                    closure(nil,nil)
+//                }
+//            }
+//        }
+//        closure(nil, nil)
+//    }
+    
+//  https://admin.funface.online
     func getEventsAPI(linkNam: String, linkNu: String,device: String, ip: String, Id: String, tennam:String,tennu:String, closure: @escaping (_ response: LoveModel?, _ error: Error?) -> Void) {
         if let linkDevice = device.urlEncoded,let tenNamLink = tennam.urlEncoded,let tenNuLink = tennu.urlEncoded{
-            requestTokenFolderGhepDoi("https://thinkdiff.us/getdata?device_them_su_kien=\(linkDevice)&ip_them_su_kien=\(ip)&id_user=\(Id)&ten_nam=\(tenNamLink)&ten_nu=\(tenNuLink)", linkNam: linkNam,linkNu: linkNu, param: nil, method: .GET, loading: true) { (data, error) in
+            requestTokenFolderGhepDoi("https://admin.funface.online/getdata?device_them_su_kien=\(linkDevice)&ip_them_su_kien=\(ip)&id_user=\(Id)&ten_nam=\(tenNamLink)&ten_nu=\(tenNuLink)", linkNam: linkNam,linkNu: linkNu, param: nil, method: .GET, loading: true) { (data, error) in
                 if let data = data as? [String:Any]{
                     var returnData: LoveModel = LoveModel()
                     returnData = returnData.initLoad(data)
@@ -1025,9 +1041,26 @@ class APIService:NSObject {
         }
         closure(nil, nil)
     }
+    
+//    func getEventsAPISuKienNgam(linkNam: String, linkNu: String,device: String, ip: String, Id: String, tennam:String,tennu:String, closure: @escaping (_ response: LoveModel?, _ error: Error?) -> Void) {
+//        if let linkDevice = device.urlEncoded,let tenNamLink = tennam.urlEncoded,let tenNuLink = tennu.urlEncoded{
+//            requestTokenFolderGhepDoi("https://thinkdiff.us/getdata/skngam?device_them_su_kien=\(linkDevice)&ip_them_su_kien=\(ip)&id_user=\(Id)&ten_nam=\(tenNamLink)&ten_nu=\(tenNuLink)", linkNam: linkNam,linkNu: linkNu, param: nil, method: .GET, loading: true) { (data, error) in
+//                if let data = data as? [String:Any]{
+//                    var returnData: LoveModel = LoveModel()
+//                    returnData = returnData.initLoad(data)
+//                    closure(returnData,nil)
+//                }else{
+//                    closure(nil,nil)
+//                }
+//            }
+//        }
+//        closure(nil, nil)
+//    }
+    
+    
     func getEventsAPISuKienNgam(linkNam: String, linkNu: String,device: String, ip: String, Id: String, tennam:String,tennu:String, closure: @escaping (_ response: LoveModel?, _ error: Error?) -> Void) {
         if let linkDevice = device.urlEncoded,let tenNamLink = tennam.urlEncoded,let tenNuLink = tennu.urlEncoded{
-            requestTokenFolderGhepDoi("https://thinkdiff.us/getdata/skngam?device_them_su_kien=\(linkDevice)&ip_them_su_kien=\(ip)&id_user=\(Id)&ten_nam=\(tenNamLink)&ten_nu=\(tenNuLink)", linkNam: linkNam,linkNu: linkNu, param: nil, method: .GET, loading: true) { (data, error) in
+            requestTokenFolderGhepDoi("https://admin.funface.online/getdata/skngam?device_them_su_kien=\(linkDevice)&ip_them_su_kien=\(ip)&id_user=\(Id)&ten_nam=\(tenNamLink)&ten_nu=\(tenNuLink)", linkNam: linkNam,linkNu: linkNu, param: nil, method: .GET, loading: true) { (data, error) in
                 if let data = data as? [String:Any]{
                     var returnData: LoveModel = LoveModel()
                     returnData = returnData.initLoad(data)
@@ -1465,11 +1498,41 @@ class APIService:NSObject {
             }
         }
     }
+//    func GenBaby(device_them_su_kien:String,ip_them_su_kien:String,id_user:Int,linknam:String, linknu:String,closure: @escaping (_ response: benbabymodal?, _ error: Error?) -> Void) {
+//        let newString1 = linknam.replacingOccurrences(of: "\"", with: "", options: .literal, range: nil)
+//        let newString2 = linknu.replacingOccurrences(of: "\"", with: "", options: .literal, range: nil)
+//        if let devicePro = device_them_su_kien.urlEncoded{
+//            requestTokenFolderGhepDoi("https://thinkdiff.us/getdata/sukien/baby?device_them_su_kien=\(device_them_su_kien)&ip_them_su_kien=\(ip_them_su_kien)&id_user=\(id_user)", linkNam: linknam, linkNu: linknu, param: nil, method: .GET, loading: true) { (data, error) in
+//                if let data = data as? [String: Any] {
+////                    if let sukienVideoData = data["sukien_baby"] as? [String: Any] {
+////                        var itemAdd = benbabymodal()
+////                        itemAdd = itemAdd.initLoad(sukienVideoData) // Use sukienVideoData here
+////                        print("asdfasdfddd\n\n\n\n\n\n   ")
+////                        print(itemAdd)
+////                        closure(itemAdd, nil)
+////                    }
+//                    if let sukienVideoDataArray = data["sukien_baby"] as? [[String: Any]],
+//                       let sukienVideoData = sukienVideoDataArray.first {
+//                        var itemAdd = benbabymodal()
+//                        itemAdd = itemAdd.initLoad(sukienVideoData)
+//                        print("asdfasdfddd\n\n\n\n\n\n   ")
+//                        print(itemAdd)
+//                        closure(itemAdd, nil)
+//                    }
+//                } else {
+//                    closure(benbabymodal(), nil)
+//                }
+//
+//            }
+//        }
+//    }
+    
+    
     func GenBaby(device_them_su_kien:String,ip_them_su_kien:String,id_user:Int,linknam:String, linknu:String,closure: @escaping (_ response: benbabymodal?, _ error: Error?) -> Void) {
         let newString1 = linknam.replacingOccurrences(of: "\"", with: "", options: .literal, range: nil)
         let newString2 = linknu.replacingOccurrences(of: "\"", with: "", options: .literal, range: nil)
         if let devicePro = device_them_su_kien.urlEncoded{
-            requestTokenFolderGhepDoi("https://thinkdiff.us/getdata/sukien/baby?device_them_su_kien=\(device_them_su_kien)&ip_them_su_kien=\(ip_them_su_kien)&id_user=\(id_user)", linkNam: linknam, linkNu: linknu, param: nil, method: .GET, loading: true) { (data, error) in
+            requestTokenFolderGhepDoi("https://admin.funface.online/getdata/sukien/baby?device_them_su_kien=\(device_them_su_kien)&ip_them_su_kien=\(ip_them_su_kien)&id_user=\(id_user)", linkNam: linknam, linkNu: linknu, param: nil, method: .GET, loading: true) { (data, error) in
                 if let data = data as? [String: Any] {
 //                    if let sukienVideoData = data["sukien_baby"] as? [String: Any] {
 //                        var itemAdd = benbabymodal()
@@ -1493,6 +1556,7 @@ class APIService:NSObject {
             }
         }
     }
+    
     func swapImageWithVideo(device: String, ip: String, userId: String, imageLink: String, videoFile: Data, closure: @escaping (_ response: DetailVideoModel?, _ error: Error?) -> Void) {
         let urlString = "https://videoswap.mangasocial.online/getdata/genvideo/swap/imagevid"
         let parameters: [String: String] = [
