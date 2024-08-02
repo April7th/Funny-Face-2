@@ -16,18 +16,29 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
         return UITabBarItem(title: "", image: UIImage(named: "user"), tag: 0)
     }
     var userId: Int = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
+    var dataUserEvent: [Sukien] = []
+    
+
+
     
     @IBOutlet weak var menuLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
-    @IBOutlet weak var videoCollectionLabel: UILabel!
-    @IBOutlet weak var imageCollectionLabel: UILabel!
+    @IBOutlet weak var videoCollectionButton: UIButton!
+    @IBOutlet weak var imageCollectionButton: UIButton!
+    @IBOutlet weak var myEventButton: UIButton!
+
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var logoutView: UIView!
+    
+    @IBOutlet weak var videoCollectionView: UIView!
+    @IBOutlet weak var imageCollectionView: UIView!
+    @IBOutlet weak var myEventView: UIView!
 
 
-    @IBOutlet weak var myEventLabel: UILabel!
+
+    
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var goToProfileButton: UIButton!
@@ -37,7 +48,7 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
         super.viewDidAppear(animated)
         
         callApiProfile()
-        
+        callAPIUserEvent()
     }
 
 
@@ -50,10 +61,22 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
     private func setupUI() {
         menuLabel.font = .quickSandBold(size: 24)
         nameLabel.font = .quickSandBold(size: 18)
-        videoCollectionLabel.font = .quickSandSemiBold(size: 16)
-        imageCollectionLabel.font = .quickSandSemiBold(size: 16)
-        myEventLabel.font = .quickSandSemiBold(size: 16)
+        videoCollectionButton.titleLabel?.font = .quickSandSemiBold(size: 16)
+        imageCollectionButton.titleLabel?.font = .quickSandSemiBold(size: 16)
+        myEventButton.titleLabel?.font = .quickSandSemiBold(size: 16)
         logOutButton.titleLabel?.font = .quickSandSemiBold(size: 16)
+        
+        let topBorder = CALayer()
+        topBorder.frame = CGRect(x: 0, y: 0, width: videoCollectionView.frame.size.width, height: 1)
+        topBorder.backgroundColor = UIColor.darkGray.cgColor
+
+//        videoCollectionView.layer.addSublayer(topBorder)
+//        imageCollectionView.layer.addSublayer(topBorder)
+//        myEventView.layer.addSublayer(topBorder)
+
+
+               
+        
         
         infoView.layer.cornerRadius = 8
         infoView.layer.masksToBounds = true
@@ -68,17 +91,56 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
 
         
     }
+    
+    @IBAction func clickToVideo(_ sender: Any) {
+        if let parentVC = findParentViewController(of: UIViewController.self) {
+            let storyboard = UIStoryboard(name: "HomeStaboad", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "albumswaped") as! albumswaped
+            
+            vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+            print("lisssss dataa")
+            //print(self)
+            
+            APIService.shared.listAllVideoSwaped(page:1){response,error in
+                vc.listTemplateVideo = response
+                parentVC.present(vc, animated: true, completion: nil)
+                //self.cacluachon.reloadData()
+            }
+        }
 
-    @IBAction func goToProfile(_ sender: Any) {
-        let vc = ProfileSettingViewController(nibName: "ProfileSettingViewController", bundle: nil)
-        //vc.data = self.dataUserEvent
+    }
+    
+    @IBAction func clickToEvent(_ sender: Any) {
+        let vc = UserEventViewController(nibName: "UserEventViewController", bundle: nil)
+        vc.data = self.dataUserEvent
         vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
         self.present(vc, animated: true, completion: nil)
     }
-    
-    @IBAction func logOut(_ sender: Any) {
+
+    @IBAction func goToProfile(_ sender: Any) {
+        let vc = ProfileSettingViewController(nibName: "ProfileSettingViewController", bundle: nil)
+        
+        vc.dataUserEvent = self.dataUserEvent
+
+        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+        self.present(vc, animated: true, completion: nil)
+    }
+
+    @IBAction func LogOutBtn(_ sender: Any) {
+         AppConstant.logout()
+        //        self.navigationController?.pushViewController(loginView(nibName: "loginView", bundle: nil), animated: true)
+        
+        if AppConstant.userId == nil {
+            //                        self.navigationController?.pushViewController(LoginViewController(nibName: "LoginViewController", bundle: nil), animated: true)
+            let storyboard = UIStoryboard(name: "login", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "loginView") as! loginView
+            vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+            self.present(vc, animated: true, completion: nil)
+            
+        }
         
     }
+
 
     func callApiProfile() {
         APIService.shared.getProfile(user: self.userId ) { result, error in
@@ -134,6 +196,18 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
+            }
+        }
+    }
+    
+    func callAPIUserEvent() {
+        APIService.shared.getUserEvent(user:  self.userId) { result, error in
+            if let success = result {
+                let data = success.list_sukien.compactMap {$0.sukien.first }
+                self.dataUserEvent = data
+                
+
+//                self.eventCountLabel.text = String(data.count)
             }
         }
     }

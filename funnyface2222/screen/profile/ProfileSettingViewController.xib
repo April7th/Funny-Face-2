@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,7 +12,6 @@
             <connections>
                 <outlet property="avatarImage" destination="kOI-36-wbt" id="hr0-7u-rwA"/>
                 <outlet property="backButton" destination="wbQ-YI-fz0" id="KBb-xi-TCA"/>
-                <outlet property="cacluachon" destination="VBz-wE-ehw" id="qgf-Lj-8Qo"/>
                 <outlet property="cameraButton" destination="Qvc-YX-xuv" id="mHW-ar-ujl"/>
                 <outlet property="commentCountLabel" destination="cyh-a6-lcy" id="zhs-2e-YIz"/>
                 <outlet property="coverImage" destination="u3G-3Z-R04" id="oc0-Mv-gap"/>
@@ -23,6 +21,7 @@
                 <outlet property="nameBotLabel" destination="sZh-Jy-F8C" id="vdS-bY-Au8"/>
                 <outlet property="nameTopLabel" destination="15I-yb-pUy" id="Nor-Sy-g8z"/>
                 <outlet property="textDefaultLabel" destination="e5q-Fs-BJp" id="9bJ-Ik-nKR"/>
+                <outlet property="userEventTableView" destination="1hv-SX-iaw" id="FRv-Bg-DS0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewCountLabel" destination="Xne-hO-0uM" id="l9h-lu-cPZ"/>
             </connections>
@@ -212,37 +211,31 @@
                         <constraint firstAttribute="height" constant="239" id="zHg-QG-6QY"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VBz-wE-ehw">
-                    <rect key="frame" x="0.0" y="468" width="393" height="384"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="the-LI-0dw">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1hv-SX-iaw">
+                    <rect key="frame" x="16" y="480" width="361" height="372"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="HAH-Ab-6uy"/>
-                        <outlet property="delegate" destination="-1" id="Wyk-fy-yk9"/>
+                        <outlet property="dataSource" destination="-1" id="J5y-Qa-vDJ"/>
+                        <outlet property="delegate" destination="-1" id="zpK-9Y-dN4"/>
                     </connections>
-                </collectionView>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="1hv-SX-iaw" secondAttribute="bottom" id="1Od-Ib-t76"/>
+                <constraint firstItem="1hv-SX-iaw" firstAttribute="top" secondItem="jBT-W8-H6L" secondAttribute="bottom" constant="22" id="4gB-Dh-rvl"/>
                 <constraint firstItem="jBT-W8-H6L" firstAttribute="top" secondItem="u3G-3Z-R04" secondAttribute="bottom" constant="-76" id="5iR-uE-94Y"/>
                 <constraint firstItem="3WH-8B-NnH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Bik-KY-Dnw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u3G-3Z-R04" secondAttribute="trailing" id="DKr-JN-WH5"/>
-                <constraint firstItem="VBz-wE-ehw" firstAttribute="top" secondItem="jBT-W8-H6L" secondAttribute="bottom" constant="10" id="DZd-bZ-hwf"/>
                 <constraint firstItem="u3G-3Z-R04" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GKN-NJ-oeH"/>
-                <constraint firstItem="VBz-wE-ehw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Hia-6i-Ism"/>
-                <constraint firstAttribute="bottom" secondItem="VBz-wE-ehw" secondAttribute="bottom" id="KU4-II-WfB"/>
+                <constraint firstItem="1hv-SX-iaw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="LAQ-jx-duY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3WH-8B-NnH" secondAttribute="trailing" id="PHc-8A-Xg9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1hv-SX-iaw" secondAttribute="trailing" constant="16" id="dms-23-i6n"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jBT-W8-H6L" secondAttribute="trailing" id="dtu-tX-xDd"/>
                 <constraint firstItem="u3G-3Z-R04" firstAttribute="top" secondItem="3WH-8B-NnH" secondAttribute="bottom" id="g9F-MA-Kr5"/>
                 <constraint firstItem="3WH-8B-NnH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uUJ-B5-9Jl"/>
                 <constraint firstItem="jBT-W8-H6L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uci-DE-FCE"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VBz-wE-ehw" secondAttribute="trailing" id="ws1-jN-hCK"/>
             </constraints>
             <point key="canvasLocation" x="136.64122137404578" y="19.718309859154932"/>
         </view>
@@ -252,8 +245,5 @@
         <image name="camera" width="24.333333969116211" height="24"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="pencilEdit" width="16" height="16"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

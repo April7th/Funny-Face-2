@@ -19,8 +19,12 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
 
     var dataUserEvent: [Sukien] = []
     var dataRecentCommemt: [CommentUser] = []
+    var data : [Sukien] = []
+
     
-    @IBOutlet weak var cacluachon:UICollectionView!
+    @IBOutlet weak var userEventTableView: UITableView!
+
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nameTopLabel: UILabel!
     @IBOutlet weak var coverImage: UIImageView!
@@ -46,11 +50,19 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
         callAPIRecentComment()
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cacluachon.register(UINib(nibName: "phanduoicell", bundle: nil), forCellWithReuseIdentifier: "phanduoicell")
-
+        userEventTableView.delegate = self
+        userEventTableView.dataSource = self
+        userEventTableView.register(cellType: Template1TBVCell.self)
+        userEventTableView.register(cellType: Template2TBVCell.self)
+        userEventTableView.register(cellType: Template3TBVCell.self)
+        userEventTableView.register(cellType: Template4TBVCell.self)
+        
+        
 
         setupUI()
     }
@@ -75,6 +87,8 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
         
         coverImage.image = UIImage(named: "background")
         coverImage.contentMode = .scaleAspectFill
+        avatarImage.backgroundColor = .clear
+        
 
     }
     
@@ -84,11 +98,20 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
     }
     
     @IBAction func editButton(_ sender: Any) {
-        
+        let vc = EditProfileViewController(nibName: "EditProfileViewController", bundle: nil)
+        vc.userId = self.userId
+        vc.boyImage = self.avatarImage
+        //vc.data = self.dataUserEvent
+        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func moreButton(_ sender: Any) {
+        let vc = ChangePassController(nibName: "ChangePassController", bundle: nil)
+        //vc.data = self.dataUserEvent
+        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
         
+        self.present(vc, animated: true, completion: nil)
     }
     
     func callApiProfile() {
@@ -96,6 +119,7 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
             if let success = result {
                 if let idUser = success.id_user{
                     self.nameTopLabel.text = success.user_name ?? ""
+                    self.nameBotLabel.text = success.user_name ?? ""
 //                    self.countEventLabel.text = success.count_sukien?.toString()
 //                    self.countCommentLabel.text = success.count_comment?.toString()
 //                    self.countViewLabel.text = (success.count_view ?? 0).toString()
@@ -107,6 +131,7 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
                         let processor = DownsamplingImageProcessor(size: self.avatarImage.bounds.size)
                         |> RoundCornerImageProcessor(cornerRadius: 50)
                         self.avatarImage.kf.indicatorType = .activity
+                        self.avatarImage.backgroundColor = .clear
                         self.avatarImage.kf.setImage(
                             with: url,
                             placeholder: UIImage(named: "placeholderImage"),
@@ -155,7 +180,9 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
             if let success = result {
                 let data = success.list_sukien.compactMap {$0.sukien.first }
                 self.dataUserEvent = data
-                self.eventCountLabel.text = String(data.count) 
+                
+
+                self.eventCountLabel.text = String(data.count)
             }
         }
     }
@@ -174,96 +201,85 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
         }
     }
     
-    
-    
 }
 
-extension ProfileSettingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-       
-        return 1
+
+extension ProfileSettingViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print("dataUserEvent: \(dataUserEvent.count)")
+
+        return dataUserEvent.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      
-       
-            return 1
-     
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let vc = DetailSwapVideoVC(nibName: "DetailSwapVideoVC", bundle: nil)
-//        var itemLink:DetailVideoModel = DetailVideoModel()
-//        itemLink.linkimg = self.listTemplateVideo[indexPath.row].link_image
-//        itemLink.link_vid_swap = self.listTemplateVideo[indexPath.row].link_vid_swap
-//        itemLink.noidung = self.listTemplateVideo[indexPath.row].noidung_sukien
-//        itemLink.id_sukien_video = self.listTemplateVideo[indexPath.row].id_video
-//        itemLink.id_video_swap = self.listTemplateVideo[indexPath.row].id_video
-//        itemLink.ten_video = self.listTemplateVideo[indexPath.row].ten_su_kien
-//        itemLink.idUser = self.listTemplateVideo[indexPath.row].id_user
-////            itemLink.thoigian_swap = Floatself.listTemplateVideo[indexPath.row].thoigian_taovid
-////\            itemLink.device_tao_vid = self.listTemplateVideo[indexPath.row].thoigian_taovid
-//        itemLink.thoigian_sukien = self.listTemplateVideo[indexPath.row].thoigian_taosk
-//        itemLink.link_video_goc = self.listTemplateVideo[indexPath.row].link_vid_swap
-//        itemLink.ip_tao_vid = self.listTemplateVideo[indexPath.row].id_video
-//        itemLink.link_vid_swap = self.listTemplateVideo[indexPath.row].link_vid_swap
-//        vc.itemDataSend = itemLink
-//        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-//        self.present(vc, animated: true, completion: nil)
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "phanduoicell", for: indexPath) as! phanduoicell
-        APIService.shared.getLoveHistory(pageLoad: 1, idUser: String(AppConstant.userId ?? 0 ) ){result, error in
-            if let result = result{
-                cell.dataList_All = result.list_sukien.compactMap {$0.sukien.first }
-                print("lít dataa")
-                print(cell.dataList_All)
-                cell.listSukien = result.list_sukien
-                cell.cacluachon2.reloadData()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = dataUserEvent[indexPath.row]
+        if item.id_template == 4 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Template4TBVCell", for: indexPath) as? Template4TBVCell else {
+                return UITableViewCell()
             }
+            cell.configCell(model: dataUserEvent[indexPath.row])
+            return cell
+        } else if item.id_template == 3 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Template3TBVCell", for: indexPath) as? Template3TBVCell else {
+                return UITableViewCell()
+            }
+            cell.configCell(model: dataUserEvent[indexPath.row])
+            return cell
+        } else if item.id_template == 2 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Template2TBVCell", for: indexPath) as? Template2TBVCell else {
+                return UITableViewCell()
+            }
+            cell.configCell(model: dataUserEvent[indexPath.row])
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Template1TBVCell", for: indexPath) as? Template1TBVCell else {
+                return UITableViewCell()
+            }
+            cell.configCell(model: dataUserEvent[indexPath.row])
+            return cell
         }
         
-    //    print(cell.dataList_All[indexPath.row].id_user)
-       
-        return cell
-           
-        
-     
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-    
-
-        return UICollectionReusableView()
     }
     
 }
 
-extension ProfileSettingViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
+extension ProfileSettingViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = UIScreen.main.bounds.size.width * 200 / 390
+        return height
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if UIDevice.current.userInterfaceIdiom == .pad{
-            return CGSize(width: UIScreen.main.bounds.width, height: 800)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = EventViewController(data: dataUserEvent[indexPath.row].id_toan_bo_su_kien ?? 0 , idsukien: dataUserEvent[indexPath.row].id_toan_bo_su_kien ?? 0)
+        vc.idToanBoSuKien = dataUserEvent[indexPath.row].id_toan_bo_su_kien ?? 0
+        var dataDetail: [EventModel] = [EventModel]()
+        var sothutu_sukien = 1
+        for indexList in dataUserEvent{
+            var itemAdd:EventModel = EventModel()
+            itemAdd.link_da_swap = indexList.link_da_swap
+            itemAdd.count_comment = 0
+            itemAdd.count_view = 0
+            itemAdd.id = indexList.id
+            itemAdd.id_user = indexList.id_user
+            let dateNow = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd, hh:mm:ss"
+            let dateString = dateFormatter.string(from:dateNow)
+            itemAdd.real_time = dateString
+            //                            itemAdd.id_template = indexList.id_template
+            itemAdd.link_nam_chua_swap = indexList.link_nam_chua_swap
+            itemAdd.link_nu_chua_swap = indexList.link_nu_chua_swap
+            itemAdd.link_nu_goc = indexList.link_nu_goc
+            itemAdd.link_nam_goc = indexList.link_nam_goc
+            itemAdd.noi_dung_su_kien = indexList.noi_dung_su_kien
+            itemAdd.so_thu_tu_su_kien = sothutu_sukien
+            sothutu_sukien = sothutu_sukien + 1
+            itemAdd.ten_su_kien = indexList.ten_su_kien
+            dataDetail.append(itemAdd)
         }
-        if indexPath.row == 0 {
-            return CGSize(width: (UIScreen.main.bounds.width), height: 500)
-        }
-        return CGSize(width: (UIScreen.main.bounds.width), height: 800)
-        
+        vc.dataDetail = dataDetail
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
 }
-

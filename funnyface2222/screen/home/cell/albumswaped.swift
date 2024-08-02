@@ -28,6 +28,10 @@ class albumswaped: UIViewController {
 
     @IBOutlet weak var cacluachonimageclv22:UICollectionView!
     @IBOutlet weak var backbtn:UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    
+    
     @IBAction func BackApp(){
         self.dismiss(animated: true)
     }
@@ -71,6 +75,10 @@ class albumswaped: UIViewController {
     var listTemplateVideo : [ResultVideoModel] = [ResultVideoModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLabel.text = "Video Collections"
+        titleLabel.font = .quickSandBold(size: 20)
+        
         backbtn.setTitle("", for: .normal)
         listCategory.setTitle("", for: .normal)
         print("lít dataa ")

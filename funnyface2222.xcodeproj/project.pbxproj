@@ -15,6 +15,8 @@
 		B71044112C53BB360093FDFE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71044102C53BB360093FDFE /* Fonts.swift */; };
 		B7377FC22C5CDC28002E45B8 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */; };
 		B7377FC32C5CDC28002E45B8 /* ProfileSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */; };
+		B7552F552C5D19DA0017722F /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7552F542C5D19DA0017722F /* EditProfileViewController.xib */; };
+		B7552F562C5D19DA0017722F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7552F532C5D19DA0017722F /* EditProfileViewController.swift */; };
 		B75C30692C53D19C00B60DB2 /* Starborn.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B75C30662C53D19C00B60DB2 /* Starborn.ttf */; };
 		B7F645392C5CCB4700261A02 /* ListToProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F645382C5CCB4700261A02 /* ListToProfileViewController.xib */; };
 		B7F6453A2C5CCB4700261A02 /* ListToProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F645372C5CCB4700261A02 /* ListToProfileViewController.swift */; };
@@ -222,6 +224,8 @@
 		B71044102C53BB360093FDFE /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingViewController.xib; sourceTree = "<group>"; };
+		B7552F532C5D19DA0017722F /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		B7552F542C5D19DA0017722F /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		B75C30662C53D19C00B60DB2 /* Starborn.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Starborn.ttf; sourceTree = "<group>"; };
 		B7F645372C5CCB4700261A02 /* ListToProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListToProfileViewController.swift; sourceTree = "<group>"; };
 		B7F645382C5CCB4700261A02 /* ListToProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListToProfileViewController.xib; sourceTree = "<group>"; };
@@ -896,6 +900,8 @@
 				E66C938F2B4E559600B74491 /* Profile */,
 				E6EB4E1E2B970527002E87A7 /* ChangePassController.swift */,
 				E6EB4E1F2B970527002E87A7 /* ChangePassController.xib */,
+				B7552F532C5D19DA0017722F /* EditProfileViewController.swift */,
+				B7552F542C5D19DA0017722F /* EditProfileViewController.xib */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -1316,6 +1322,7 @@
 				B7377FC32C5CDC28002E45B8 /* ProfileSettingViewController.xib in Resources */,
 				E66C93F22B4E559600B74491 /* ChangerAvatarViewController.xib in Resources */,
 				E68D67272B5F9FCE00E410FC /* hightlightmain.xib in Resources */,
+				B7552F552C5D19DA0017722F /* EditProfileViewController.xib in Resources */,
 				E676F5D92B60FDA300C96049 /* celleventduoi.xib in Resources */,
 				B75C30692C53D19C00B60DB2 /* Starborn.ttf in Resources */,
 				E66C94022B4E559600B74491 /* DetailHowToVC.xib in Resources */,
@@ -1538,6 +1545,7 @@
 				E68D673B2B5FCC7700E410FC /* viptestmain.swift in Sources */,
 				E66C92D92B4E52EC00B74491 /* SceneDelegate.swift in Sources */,
 				E66C93E92B4E559600B74491 /* CommentsViewController.swift in Sources */,
+				B7552F562C5D19DA0017722F /* EditProfileViewController.swift in Sources */,
 				E66C941C2B4E55B000B74491 /* LauchViewController.swift in Sources */,
 				E66C92EB2B4E551F00B74491 /* R.generated.swift in Sources */,
 				E66C93E32B4E559600B74491 /* LoveViewController.swift in Sources */,
