@@ -826,6 +826,8 @@ class APIService:NSObject {
         }
         closure(nil, nil)
     }
+
+    
     func ChangeAvater(param:[String: String],userId:Int, closure: @escaping (_ response: avatarModal?, _ error: Error?) -> Void) {
         requestFreeHostSON3("https://databaseswap.mangasocial.online/changeavatar/\(userId)" , param: param, method: .POST, loading: true) { (data, error) in
             if let data = data as? [String:Any]{
@@ -1615,6 +1617,14 @@ class APIService:NSObject {
         }
         // closure("Please Wait To Remove", nil)
     }
+    
+    //  https://databaseswap.mangasocial.online/reset/
+
+        
+   
+        
+    
+    
     func AddEvent(ten_sukien: String,noidung_su_kien: String,ten_nam:String,ten_nu:String, id_template :Int ,device: String,ip_them_su_kien:String, ip: Int, userId: String, imageLink: String,link_video:String,  closure: @escaping (_ response: String?, _ error: Error?) -> Void) {
         let urlString = "https://databaseswap.mangasocial.online/lovehistory/add/\(ip)"
         let newString1 = imageLink.replacingOccurrences(of: "\"", with: "", options: .literal, range: nil)

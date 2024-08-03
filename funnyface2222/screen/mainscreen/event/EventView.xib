@@ -126,7 +126,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="b2r-M6-K18">
-                    <rect key="frame" x="16" y="182" width="361" height="621"/>
+                    <rect key="frame" x="16" y="207" width="361" height="596"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="tr_cornerRadius">
@@ -160,7 +160,7 @@
                 <constraint firstItem="Rhq-xi-XAt" firstAttribute="bottom" secondItem="b2r-M6-K18" secondAttribute="bottom" constant="15" id="HvM-ym-dNC"/>
                 <constraint firstItem="Rhq-xi-XAt" firstAttribute="trailing" secondItem="ma4-gv-s2G" secondAttribute="trailing" constant="16" id="Km6-I1-aU5"/>
                 <constraint firstItem="flD-RV-gdw" firstAttribute="top" secondItem="Rhq-xi-XAt" secondAttribute="top" constant="24" id="Ljr-mR-cdt"/>
-                <constraint firstItem="b2r-M6-K18" firstAttribute="top" secondItem="ma4-gv-s2G" secondAttribute="bottom" id="Nj4-NJ-Y3X"/>
+                <constraint firstItem="b2r-M6-K18" firstAttribute="top" secondItem="ma4-gv-s2G" secondAttribute="bottom" constant="25" id="Nj4-NJ-Y3X"/>
                 <constraint firstItem="9FV-EU-N8k" firstAttribute="top" secondItem="IeZ-c5-p56" secondAttribute="top" id="Nxd-nN-zJP"/>
                 <constraint firstItem="9FV-EU-N8k" firstAttribute="leading" secondItem="Rhq-xi-XAt" secondAttribute="leading" id="REI-sZ-Dhv"/>
                 <constraint firstItem="b2r-M6-K18" firstAttribute="leading" secondItem="Rhq-xi-XAt" secondAttribute="leading" constant="16" id="cCV-ra-iOK"/>

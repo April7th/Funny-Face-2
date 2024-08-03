@@ -91,12 +91,14 @@ class EditProfileViewController: UIViewController {
                         return
                     }
                     if let result = result{
-                        let vc = ListToProfileViewController(nibName: "ListToProfileViewController", bundle: nil)
-                        //vc.data = self.dataUserEvent
-                        vc.userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
-                        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-                        self.present(vc, animated: true, completion: nil)
-                            print("dungg")
+//                        let vc = ListToProfileViewController(nibName: "ListToProfileViewController", bundle: nil)
+//                        //vc.data = self.dataUserEvent
+//                        vc.userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
+//                        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+//                        self.present(vc, animated: true, completion: nil)
+//                            print("dungg")
+                        
+                        self.dismiss(animated: true)
 //
 //                        let vc = TabbarViewController()
 //                        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency

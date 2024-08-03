@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B70C32E72C5E97440016542E /* ResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70C32E52C5E97440016542E /* ResetPassViewController.swift */; };
+		B70C32E82C5E97440016542E /* ResetPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70C32E62C5E97440016542E /* ResetPassViewController.xib */; };
 		B710440B2C53B5340093FDFE /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B71044052C53B5340093FDFE /* Quicksand-Bold.ttf */; };
 		B710440C2C53B5340093FDFE /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B71044062C53B5340093FDFE /* Quicksand-Light.ttf */; };
 		B710440D2C53B5340093FDFE /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B71044072C53B5340093FDFE /* Quicksand-Medium.ttf */; };
@@ -216,6 +218,8 @@
 
 /* Begin PBXFileReference section */
 		6B9A5286F424308C091C593A /* Pods-funnyface2222.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funnyface2222.release.xcconfig"; path = "Target Support Files/Pods-funnyface2222/Pods-funnyface2222.release.xcconfig"; sourceTree = "<group>"; };
+		B70C32E52C5E97440016542E /* ResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewController.swift; sourceTree = "<group>"; };
+		B70C32E62C5E97440016542E /* ResetPassViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPassViewController.xib; sourceTree = "<group>"; };
 		B71044052C53B5340093FDFE /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
 		B71044062C53B5340093FDFE /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
 		B71044072C53B5340093FDFE /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
@@ -445,6 +449,15 @@
 				6B9A5286F424308C091C593A /* Pods-funnyface2222.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B70C32E42C5E97220016542E /* Reset password */ = {
+			isa = PBXGroup;
+			children = (
+				B70C32E52C5E97440016542E /* ResetPassViewController.swift */,
+				B70C32E62C5E97440016542E /* ResetPassViewController.xib */,
+			);
+			path = "Reset password";
 			sourceTree = "<group>";
 		};
 		B70C45A52C5E46FA00C76613 /* Profile exp */ = {
@@ -1011,6 +1024,7 @@
 		E66C93B42B4E559600B74491 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				B70C32E42C5E97220016542E /* Reset password */,
 				E66C93B82B4E559600B74491 /* login.storyboard */,
 				E66C93B92B4E559600B74491 /* Register */,
 				E66C93BF2B4E559600B74491 /* loin */,
@@ -1370,6 +1384,7 @@
 				E64614552B62574F000681D3 /* EventStoab.storyboard in Resources */,
 				E68D67312B5FBA7200E410FC /* cellVideoSwaped.xib in Resources */,
 				E64E47BD2B5E3D0F007DDAD0 /* swapvideo2.xib in Resources */,
+				B70C32E82C5E97440016542E /* ResetPassViewController.xib in Resources */,
 				E64E47C42B5E5768007DDAD0 /* download.png in Resources */,
 				E68D67392B5FCC0A00E410FC /* phanduoicell.xib in Resources */,
 				E66C93E72B4E559600B74491 /* LoveViewController.xib in Resources */,
@@ -1487,6 +1502,7 @@
 				E66C93CC2B4E559600B74491 /* DetailSwapVideoVC.swift in Sources */,
 				E66C94032B4E559600B74491 /* ProfileModel.swift in Sources */,
 				E67DF4652B5520410074D573 /* testViewController.swift in Sources */,
+				B70C32E72C5E97440016542E /* ResetPassViewController.swift in Sources */,
 				E66C93F12B4E559600B74491 /* InputPasswordVC.swift in Sources */,
 				E66C93F02B4E559600B74491 /* RecentCommentTableViewCell.swift in Sources */,
 				E66C93392B4E557A00B74491 /* UIView+Extension.swift in Sources */,

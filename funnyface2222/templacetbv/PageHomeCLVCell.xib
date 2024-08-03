@@ -12,14 +12,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PageHomeCLVCell" id="gTV-IL-0wX" userLabel="PageHomeCLVCell" customClass="PageHomeCLVCell" customModule="funnyface2222" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="147" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="73" height="67"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="147" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="73" height="67"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zq4-f6-dVG">
-                        <rect key="frame" x="0.0" y="0.0" width="147" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="73" height="67"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" systemColor="systemOrangeColor"/>
                         <nil key="highlightedColor"/>
@@ -33,11 +33,11 @@
                 <constraint firstAttribute="trailing" secondItem="zq4-f6-dVG" secondAttribute="trailing" id="E5j-Lk-FfT"/>
                 <constraint firstAttribute="bottom" secondItem="zq4-f6-dVG" secondAttribute="bottom" id="uEm-4q-IH7"/>
             </constraints>
-            <size key="customSize" width="147" height="100"/>
+            <size key="customSize" width="73" height="67"/>
             <connections>
                 <outlet property="pageLabel" destination="zq4-f6-dVG" id="F8S-7n-ulb"/>
             </connections>
-            <point key="canvasLocation" x="119.84732824427481" y="4.9295774647887329"/>
+            <point key="canvasLocation" x="63.358778625954194" y="-6.6901408450704229"/>
         </collectionViewCell>
     </objects>
     <resources>

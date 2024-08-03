@@ -102,7 +102,7 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
         
         collectionView.layer.cornerRadius = 12
         collectionView.layer.masksToBounds = true
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = UIColor(hexString: "191919")
         
     }
     
@@ -269,8 +269,16 @@ extension EventView: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.pageLabel.text = String(indexPath.row + 1)
         if indexPath.row == indexSelectPage{
             cell.backgroundColor = UIColor(hexString: "#1DB954")
+            cell.layer.cornerRadius = cell.frame.height/2
+//            cell.layer.masksToBounds = true
+            cell.clipsToBounds = true
+
+            
         }else{
             cell.backgroundColor = UIColor.clear
+            cell.layer.cornerRadius = cell.frame.height/2
+//            cell.layer.masksToBounds = true
+            cell.clipsToBounds = true
         }
         return cell
     }
@@ -298,9 +306,9 @@ extension EventView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if UIDevice.current.userInterfaceIdiom == .pad{
-            return CGSize(width: UIScreen.main.bounds.width/24 - 5, height: 50)
+            return CGSize(width: 40, height: 40)
         }
-        return CGSize(width: UIScreen.main.bounds.width/12 - 5, height: 50)
+        return CGSize(width: 40, height: 40)
     }
 }
 

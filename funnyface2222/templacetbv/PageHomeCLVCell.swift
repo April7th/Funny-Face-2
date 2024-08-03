@@ -9,11 +9,11 @@ import UIKit
 
 class PageHomeCLVCell: UICollectionViewCell {
     @IBOutlet weak var pageLabel: UILabel!
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         pageLabel.font = .quickSandSemiBold(size: 16)
+        pageLabel.textColor = .white
     }
 
 }

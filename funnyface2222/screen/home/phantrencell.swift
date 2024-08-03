@@ -82,14 +82,9 @@ class phantrencell: UICollectionViewCell {
         }
         
         highlightLabel.font = .quickSandBold(size: 20)
-        showMoreLabel.titleLabel?.font = .quickSandBold(size: 14)
         
-        if let customFont = UIFont(name: "Quicksand-Bold", size: 14) {
-            showMoreLabel.setCustomFont(customFont, for: [.normal, .highlighted, .selected, .disabled])
-        }
-        
-        
-        
+        showMoreLabel.setCustomFontForAllState(name: quicksandBold, size: 14)
+     
     }
     
     

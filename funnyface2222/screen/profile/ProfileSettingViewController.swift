@@ -75,6 +75,7 @@ class ProfileSettingViewController: UIViewController{
         nameTopLabel.font = .quickSandBold(size: 16)
         cameraButton.setTitle("", for: .normal)
         editButton.setTitle("   Edit profile", for: .normal)
+        editButton.setCustomFontForAllState(name: quicksandBold, size: 14)
         editButton.layer.cornerRadius = 8
         editButton.layer.masksToBounds = true
         

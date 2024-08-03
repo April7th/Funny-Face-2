@@ -67,30 +67,17 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
     private func setupUI() {
         menuLabel.font = .quickSandBold(size: 24)
         nameLabel.font = .quickSandBold(size: 18)
-        videoCollectionButton.titleLabel?.font = .quickSandSemiBold(size: 16)
-        imageCollectionButton.titleLabel?.font = .quickSandSemiBold(size: 16)
-        myEventButton.titleLabel?.font = .quickSandSemiBold(size: 16)
-        logOutButton.titleLabel?.font = .quickSandSemiBold(size: 16)
-        
-        let topBorder = CALayer()
-        topBorder.frame = CGRect(x: 0, y: 0, width: videoCollectionView.frame.size.width, height: 1)
-        topBorder.backgroundColor = UIColor.darkGray.cgColor
-
-//        videoCollectionView.layer.addSublayer(topBorder)
-//        imageCollectionView.layer.addSublayer(topBorder)
-//        myEventView.layer.addSublayer(topBorder)
+        videoCollectionButton.setCustomFontForAllState(name: quicksandSemiBold, size: 16)
+        imageCollectionButton.setCustomFontForAllState(name: quicksandSemiBold, size: 16)
+        myEventButton.setCustomFontForAllState(name: quicksandSemiBold, size: 16)
+        logOutButton.setCustomFontForAllState(name: quicksandSemiBold, size: 16)
 
 
-               
         
-        
-        infoView.layer.cornerRadius = 8
+        infoView.layer.cornerRadius = 10
         infoView.layer.masksToBounds = true
-        logoutView.layer.cornerRadius = 8
+        logoutView.layer.cornerRadius = 10
         logoutView.layer.masksToBounds = true
-        
-//        avatarImage.layer.cornerRadius = 50
-//        avatarImage.layer.masksToBounds = true
         
         searchButton.setTitle("", for: .normal)
         goToProfileButton.setTitle("", for: .normal)
@@ -103,9 +90,8 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
             let storyboard = UIStoryboard(name: "HomeStaboad", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "albumswaped") as! albumswaped
             
-            vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+            vc.modalPresentationStyle = .fullScreen
             print("lisssss dataa")
-            //print(self)
             
             APIService.shared.listAllVideoSwaped(page:1){response,error in
                 vc.listTemplateVideo = response
@@ -141,6 +127,7 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
             let storyboard = UIStoryboard(name: "login", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "loginView") as! loginView
             vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+            
             self.present(vc, animated: true, completion: nil)
             
         }

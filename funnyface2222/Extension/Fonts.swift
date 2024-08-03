@@ -8,6 +8,14 @@
 import Foundation
 import UIKit
 
+var quicksandBold = "Quicksand-Bold"
+var quicksandLight = "Quicksand-Light"
+var quicksandMedium = "Quicksand-Medium"
+var quicksandSemiBold = "Quicksand-SemiBold"
+var quicksandRegular = "Quicksand-Regularo"
+
+
+
 extension UIFont {
     static func quickSandLight(size: CGFloat) -> UIFont? {
         return UIFont(name: "Quicksand-Light", size: size)
@@ -78,8 +86,22 @@ extension UIButton {
         }
     }
     
+    func setCustomFontForAllState(name: String, size: CGFloat) {
+        let font = UIFont(name: name, size: size)!
+        self.titleLabel?.font = font
+        
+        let states: [UIControl.State] = [.normal, .highlighted, .selected, .disabled]
+        for state in states {
+            if let title = self.title(for: state) {
+                let attributedTitle = NSAttributedString(string: title, attributes: [.font: font])
+                self.setAttributedTitle(attributedTitle, for: state)
+            }
+        }
+    }
+
 
 }
+
 
 
 

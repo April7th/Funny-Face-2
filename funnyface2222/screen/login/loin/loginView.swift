@@ -79,13 +79,16 @@ class loginView: BaseViewController {
         }else{
             setDataPro()
         }
+        
+        
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
       //  oldLoginLabel.addGestureRecognizer(tap)
       //  oldLoginLabel.isUserInteractionEnabled = true
-        
        // settingAttrLabel()
         callApiIP()
         self.errorMessageLabel.text = ""
@@ -100,12 +103,18 @@ class loginView: BaseViewController {
         loginLabel.font = .quickSandBold(size: 20)
         signUpWithEmailLabel.font = .quickSandSemiBold(size: 14)
         rememberLabel.font = .quickSandMedium(size: 14)
-        if let customFont = UIFont.quickSandSemiBold(size: 14) {
-            forgotPassButton.titleLabel?.font = customFont
-        }
-        if let customFont = UIFont.quickSandSemiBold(size: 14) {
-            signUpButton.titleLabel?.font = customFont
-        }
+        
+        
+        forgotPassButton.setCustomFontForAllState(name: quicksandSemiBold, size: 14)
+        
+        signUpButton.setCustomFontForAllState(name: quicksandBold, size: 14)
+//
+//        if #available(iOS 15.0, *) {
+//            signUpButton.configuration?.attributedTitle?.font = UIFont.quickSandBold(size: 14)
+//        } else {
+//            
+//        }
+
         dontHaveAccountLabel.font = .quickSandSemiBold(size: 14)
         
         checkboxButton.setTitle("", for: .normal)
@@ -277,9 +286,15 @@ class loginView: BaseViewController {
         self.present(vc, animated: true, completion: nil)
     }
     @IBAction func SkipLoginAccount(){
-        AppConstant.userId = nil
-        let storyboard = UIStoryboard(name: "mhchinh", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "mhchinhController") as! mhchinhController
+//        AppConstant.userId = nil
+//        let storyboard = UIStoryboard(name: "mhchinh", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "mhchinhController") as! mhchinhController
+//        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+//        self.present(vc, animated: true, completion: nil)
+        
+        let vc = ResetPassViewController(nibName: "ResetPassViewController", bundle: nil)
+        
+        //vc.data = self.dataUserEvent
         vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
         self.present(vc, animated: true, completion: nil)
     }

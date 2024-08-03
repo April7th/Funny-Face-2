@@ -26,7 +26,8 @@ class cacluachonclv: UICollectionViewCell {
     
     private func setupUI() {
         labelNameCategori.font = .quickSandBold(size: 20)
-        showMoreBtn.titleLabel?.font = .quickSandSemiBold(size: 14)
+        
+        showMoreBtn.setCustomFontForAllState(name: quicksandSemiBold, size: 14)
         
     }
 }

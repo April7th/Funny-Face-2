@@ -15,7 +15,7 @@ class ImageMainViewController: UIViewController {
     
     @IBAction func swapnext(){
         if let parentVC = findParentViewController(of: UIViewController.self) {
-                let nextViewController = SwapImageAlbum(nibName: "SwapImageAlbum", bundle: nil)
+                let nextViewController = swapNewImage(nibName: "swapNewImage", bundle: nil)
                // nextViewController.itemLink = self.listTemplateVideo[indexPath.row]
                 
                 parentVC.present(nextViewController, animated: true, completion: nil)
@@ -27,7 +27,7 @@ class ImageMainViewController: UIViewController {
         setupUI()
         super.viewDidLoad()
         cacluachonimageclv.register(UINib(nibName: "cacluachonimageclv", bundle: nil), forCellWithReuseIdentifier: "cacluachonimageclv")
-        // Do any additional setup after loading the view.
+        
     }
     
     private func setupUI() {
@@ -35,16 +35,7 @@ class ImageMainViewController: UIViewController {
         createYourOwnImagesLabel.font = .quickSandBold(size: 20)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }
 extension ImageMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
