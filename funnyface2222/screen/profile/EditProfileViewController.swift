@@ -68,11 +68,12 @@ class EditProfileViewController: UIViewController {
     }
     
     @IBAction func backAction(_ sender: Any) {
-        let vc = ProfileSettingViewController(nibName: "ProfileSettingViewController", bundle: nil)
-        vc.userId = self.userId
-        vc.dataUserEvent = self.dataUserEvent
-        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-        self.present(vc, animated: true, completion: nil)
+//        let vc = ProfileSettingViewController(nibName: "ProfileSettingViewController", bundle: nil)
+//        vc.userId = self.userId
+//        vc.dataUserEvent = self.dataUserEvent
+//        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+//        self.present(vc, animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
 
     @IBAction func saveAction(_ sender: Any) {

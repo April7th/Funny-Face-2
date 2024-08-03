@@ -38,18 +38,20 @@ class newEevntViewController: BaseViewController {
       print("anh vip : " + self.linkImage)
         APIService.shared.AddEvent(ten_sukien: tensvtextfield.text!, noidung_su_kien: noidungtextfiled.text!, ten_nam: "aaaa", ten_nu: "aaaa", id_template: 1, device: AppConstant.modelName ?? "iphone", ip_them_su_kien: "aaaa", ip: idsukien, userId: AppConstant.userId.asStringOrEmpty(), imageLink: self.linkImage, link_video: "fadsdf"){result, error in
             if let result = result{
+                print("Result is:\(result)")
                 // create the alert
                 let alert = UIAlertController(title: "thong bao", message: result, preferredStyle: UIAlertController.Style.alert)
 
                 // add an action (button)
                 alert.addAction(UIAlertAction(title: "oke", style: UIAlertAction.Style.default, handler: nil))
 
-                let vc = EventView(nibName: "EventView", bundle: nil)
-              
-                vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-                self.present(vc, animated: true, completion: nil)
-                // show the alert
-                self.present(alert, animated: true, completion: nil)
+//                let vc = EventView(nibName: "EventView", bundle: nil)
+//              
+//                vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+//                self.present(vc, animated: true, completion: nil)
+//                // show the alert
+//                self.present(alert, animated: true, completion: nil)
+                self.dismiss(animated: true)
 
             }
         }

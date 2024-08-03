@@ -18,6 +18,10 @@ import AlamofireImage
 import DeviceKit
 
 class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
+    
+    var userId: Int = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
+    var dataUserEvent: [Sukien] = []
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var buttonSearch: UIButton!
@@ -39,8 +43,10 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       // viewBackground.gradient()
+        callAPIUserEvent()
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,13 +89,24 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
         
         if let url = URL(string: AppConstant.linkAvatar.asStringOrEmpty()){
             avatarImage.af.setImage(withURL: url)
+        } else {
+            avatarImage.image = UIImage(named: "noavatar")
         }
+        
+        
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull For Refresh")
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         homeTableView.refreshControl = refreshControl
+        
+        collectionView.layer.cornerRadius = 12
+        collectionView.layer.masksToBounds = true
+        collectionView.backgroundColor = .white
+        
     }
+    
+    
     
     @objc func refreshData() {
         callApiHome()
@@ -114,13 +131,32 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
             }
         }
     }
+    
+    func callAPIUserEvent() {
+        APIService.shared.getUserEvent(user:  self.userId) { result, error in
+            if let success = result {
+                let data = success.list_sukien.compactMap {$0.sukien.first }
+                self.dataUserEvent = data
+                
+
+//                self.eventCountLabel.text = String(data.count)
+            }
+        }
+    }
+    
     @IBAction func actionNextProfile(_ sender: Any) {
-        let vc = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
-        vc.userId = AppConstant.userId ?? 0
-        vc.callAPIRecentComment()
-        vc.callApiProfile()
-        vc.callAPIUserEvent()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+//        vc.userId = AppConstant.userId ?? 0
+//        vc.callAPIRecentComment()
+//        vc.callApiProfile()
+//        vc.callAPIUserEvent()
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let vc = ProfileSettingViewController(nibName: "ProfileSettingViewController", bundle: nil)
+        vc.dataUserEvent = self.dataUserEvent
+
+        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+        self.present(vc, animated: true, completion: nil)
     }
     
 }
@@ -232,7 +268,7 @@ extension EventView: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PageHomeCLVCell.className, for: indexPath) as! PageHomeCLVCell
         cell.pageLabel.text = String(indexPath.row + 1)
         if indexPath.row == indexSelectPage{
-            cell.backgroundColor = UIColor.green
+            cell.backgroundColor = UIColor(hexString: "#1DB954")
         }else{
             cell.backgroundColor = UIColor.white
         }

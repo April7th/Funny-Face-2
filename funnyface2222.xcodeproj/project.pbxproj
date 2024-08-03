@@ -337,7 +337,7 @@
 		E66C93912B4E559600B74491 /* InputPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPasswordVC.swift; sourceTree = "<group>"; };
 		E66C93932B4E559600B74491 /* ChangerAvatarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangerAvatarViewController.xib; sourceTree = "<group>"; };
 		E66C93942B4E559600B74491 /* ChangerAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangerAvatarViewController.swift; sourceTree = "<group>"; };
-		E66C93952B4E559600B74491 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Profile/ProfileViewController.xib; sourceTree = "<group>"; };
+		E66C93952B4E559600B74491 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		E66C93962B4E559600B74491 /* RecentCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentCommentTableViewCell.xib; sourceTree = "<group>"; };
 		E66C93972B4E559600B74491 /* UserSearchTBVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSearchTBVCell.xib; sourceTree = "<group>"; };
 		E66C939A2B4E559600B74491 /* UserEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserEventViewController.xib; sourceTree = "<group>"; };
@@ -445,6 +445,15 @@
 				6B9A5286F424308C091C593A /* Pods-funnyface2222.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B70C45A52C5E46FA00C76613 /* Profile exp */ = {
+			isa = PBXGroup;
+			children = (
+				E66C93952B4E559600B74491 /* ProfileViewController.xib */,
+				E66C939F2B4E559600B74491 /* ProfileViewController.swift */,
+			);
+			path = "Profile exp";
 			sourceTree = "<group>";
 		};
 		B710440A2C53B5340093FDFE /* Custom Font */ = {
@@ -891,8 +900,7 @@
 		E66C938D2B4E559600B74491 /* profile */ = {
 			isa = PBXGroup;
 			children = (
-				E66C93952B4E559600B74491 /* ProfileViewController.xib */,
-				E66C939F2B4E559600B74491 /* ProfileViewController.swift */,
+				B70C45A52C5E46FA00C76613 /* Profile exp */,
 				B7F645372C5CCB4700261A02 /* ListToProfileViewController.swift */,
 				B7F645382C5CCB4700261A02 /* ListToProfileViewController.xib */,
 				B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */,

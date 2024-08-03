@@ -43,7 +43,13 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var goToProfileButton: UIButton!
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
 
+   
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         

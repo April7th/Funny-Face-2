@@ -213,6 +213,7 @@ class ProfileViewController: UIViewController ,SETabItemProvider{
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: false)
         self.dismiss(animated: true)
+        
     }
     
     @IBAction func userEventBtn(_ sender: Any) {

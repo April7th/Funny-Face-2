@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -94,7 +94,7 @@
                                 <constraint firstAttribute="height" constant="30" id="dte-Nz-3Mn"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="noavatar"/>
+                            <buttonConfiguration key="configuration" style="plain"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="tr_cornerRadius">
                                     <real key="value" value="19"/>
@@ -135,7 +135,7 @@
                     </userDefinedRuntimeAttributes>
                 </tableView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ma4-gv-s2G">
-                    <rect key="frame" x="0.0" y="132" width="393" height="50"/>
+                    <rect key="frame" x="16" y="132" width="361" height="50"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Gcw-jQ-kd0"/>
@@ -155,10 +155,10 @@
             <viewLayoutGuide key="safeArea" id="Rhq-xi-XAt"/>
             <color key="backgroundColor" systemColor="labelColor"/>
             <constraints>
-                <constraint firstItem="ma4-gv-s2G" firstAttribute="leading" secondItem="Rhq-xi-XAt" secondAttribute="leading" id="5DP-M5-t2H"/>
+                <constraint firstItem="ma4-gv-s2G" firstAttribute="leading" secondItem="Rhq-xi-XAt" secondAttribute="leading" constant="16" id="5DP-M5-t2H"/>
                 <constraint firstItem="Rhq-xi-XAt" firstAttribute="trailing" secondItem="b2r-M6-K18" secondAttribute="trailing" constant="16" id="H4c-yG-wvR"/>
                 <constraint firstItem="Rhq-xi-XAt" firstAttribute="bottom" secondItem="b2r-M6-K18" secondAttribute="bottom" constant="15" id="HvM-ym-dNC"/>
-                <constraint firstItem="Rhq-xi-XAt" firstAttribute="trailing" secondItem="ma4-gv-s2G" secondAttribute="trailing" id="Km6-I1-aU5"/>
+                <constraint firstItem="Rhq-xi-XAt" firstAttribute="trailing" secondItem="ma4-gv-s2G" secondAttribute="trailing" constant="16" id="Km6-I1-aU5"/>
                 <constraint firstItem="flD-RV-gdw" firstAttribute="top" secondItem="Rhq-xi-XAt" secondAttribute="top" constant="24" id="Ljr-mR-cdt"/>
                 <constraint firstItem="b2r-M6-K18" firstAttribute="top" secondItem="ma4-gv-s2G" secondAttribute="bottom" id="Nj4-NJ-Y3X"/>
                 <constraint firstItem="9FV-EU-N8k" firstAttribute="top" secondItem="IeZ-c5-p56" secondAttribute="top" id="Nxd-nN-zJP"/>
@@ -174,7 +174,6 @@
         </view>
     </objects>
     <resources>
-        <image name="noavatar" width="30" height="30"/>
         <image name="search" width="20" height="20.333333969116211"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -10,11 +10,11 @@ import AlamofireImage
 import Kingfisher
 import SETabView
 
-class ProfileSettingViewController: UIViewController, SETabItemProvider {
+class ProfileSettingViewController: UIViewController{
 
-    var seTabBarItem: UITabBarItem? {
-        return UITabBarItem(title: "", image: UIImage(named: "user"), tag: 0)
-    }
+//    var seTabBarItem: UITabBarItem? {
+//        return UITabBarItem(title: "", image: UIImage(named: "user"), tag: 0)
+//    }
     var userId: Int = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
 
     var dataUserEvent: [Sukien] = []
@@ -39,6 +39,8 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
     
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
+    
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,12 +97,13 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
     @IBAction func backButton(_ sender: Any) {
 //        self.navigationController?.popToRootViewController(animated: false)
 //        self.dismiss(animated: true)
+        self.dismiss(animated: true)
         
-        let vc = ListToProfileViewController(nibName: "ListToProfileViewController", bundle: nil)
-        vc.userId = self.userId
-        //vc.data = self.dataUserEvent
-        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-        self.present(vc, animated: true, completion: nil)
+//        let vc = ListToProfileViewController(nibName: "ListToProfileViewController", bundle: nil)
+//        vc.userId = self.userId
+//        //vc.data = self.dataUserEvent
+//        vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+//        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func editButton(_ sender: Any) {
@@ -125,9 +128,9 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
                 if let idUser = success.id_user{
                     self.nameTopLabel.text = success.user_name ?? ""
                     self.nameBotLabel.text = success.user_name ?? ""
-//                    self.countEventLabel.text = success.count_sukien?.toString()
-//                    self.countCommentLabel.text = success.count_comment?.toString()
-//                    self.countViewLabel.text = (success.count_view ?? 0).toString()
+                    self.eventCountLabel.text = success.count_sukien?.toString()
+                    self.commentCountLabel.text = success.count_comment?.toString()
+                    self.viewCountLabel.text = (success.count_view ?? 0).toString()
 //                    self.ipRegisterLabel.text = "Ip Register: " + (success.ip_register ?? "")
 //                    self.deviceRegisterLabel.text = "Device Register: " + (success.device_register ?? "")
 //                    self.emailLabel.text = success.email ?? ""
@@ -181,6 +184,7 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
     }
     
     
+    
     func callAPIUserEvent() {
         APIService.shared.getUserEvent(user:  self.userId) { result, error in
             if let success = result {
@@ -188,7 +192,7 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
                 self.dataUserEvent = data
                 
 
-                self.eventCountLabel.text = String(data.count)
+//                self.eventCountLabel.text = String(data.count)
             }
         }
     }
@@ -199,13 +203,15 @@ class ProfileSettingViewController: UIViewController, SETabItemProvider {
                 self.dataRecentCommemt = success.comment_user.reversed()
                 
                 if self.dataRecentCommemt.count == 0 {
-                    self.commentCountLabel.text = "0"
+//                    self.commentCountLabel.text = "0"
                 } else {
-                    self.commentCountLabel.text = String(self.dataRecentCommemt.count)
+//                    self.commentCountLabel.text = String(self.dataRecentCommemt.count)
                 }
             }
         }
     }
+    
+   
     
 }
 
