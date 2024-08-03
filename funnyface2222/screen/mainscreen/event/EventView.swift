@@ -102,7 +102,7 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
         
         collectionView.layer.cornerRadius = 12
         collectionView.layer.masksToBounds = true
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
         
     }
     
@@ -270,7 +270,7 @@ extension EventView: UICollectionViewDelegate, UICollectionViewDataSource {
         if indexPath.row == indexSelectPage{
             cell.backgroundColor = UIColor(hexString: "#1DB954")
         }else{
-            cell.backgroundColor = UIColor.white
+            cell.backgroundColor = UIColor.clear
         }
         return cell
     }
