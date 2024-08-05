@@ -15,6 +15,7 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
     @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var buttonSearch: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
 
     var dataList_All: [Sukien] = []
     var seTabBarItem: UITabBarItem? {
@@ -155,6 +156,10 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
         refreshControl.attributedTitle = NSAttributedString(string: "Pull Refresh")
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         commentTableView.refreshControl = refreshControl
+        titleLabel.text = "All Comments"
+        titleLabel.font = .quickSandBold(size: 20)
+        collectionView.backgroundColor = .clear
+        
     }
     @objc func refreshData() {
         callAPIgetdataComment()
@@ -250,6 +255,10 @@ extension CommentsViewController : UITableViewDataSource {
         cell.configCellComment(model: dataComment[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
 
 extension CommentsViewController: UITableViewDelegate {
@@ -334,9 +343,12 @@ extension CommentsViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PageHomeCLVCell.className, for: indexPath) as! PageHomeCLVCell
         cell.pageLabel.text = String(indexPath.row + 1)
         if indexPath.row == indexSelectPage{
-            cell.backgroundColor = UIColor.green
-        }else{
             cell.backgroundColor = UIColor.white
+            cell.pageLabel.textColor = UIColor.black
+        }else{
+            cell.backgroundColor = UIColor.clear
+            cell.pageLabel.textColor = UIColor.white
+            
         }
         return cell
     }
@@ -364,9 +376,9 @@ extension CommentsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if UIDevice.current.userInterfaceIdiom == .pad{
-            return CGSize(width: UIScreen.main.bounds.width/24 - 5, height: 50)
+            return CGSize(width: UIScreen.main.bounds.width/24 - 3, height: 50)
         }
-        return CGSize(width: UIScreen.main.bounds.width/12 - 5, height: 50)
+        return CGSize(width: UIScreen.main.bounds.width/12 - 3, height: 50)
     }
 }
 

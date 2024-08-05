@@ -48,6 +48,12 @@ class DetailCommentTableViewCell: UITableViewCell {
         selectionStyle = .none
         buttonReport.setTitle("", for: .normal)
         buttonDelete.setTitle("", for: .normal)
+        userNameLabel.font = .quickSandBold(size: 16)
+        descriptionLabel.font = .quickSandRegular(size: 12)
+        descriptionLabel.textColor = UIColor(hexString: "#bfbfbf")
+        timeLabel.font = .quickSandRegular(size: 10)
+        timeLabel.textColor = UIColor.white.withAlphaComponent(0.5)
+        
     }
     
     @IBAction func blockAccountPro(){
@@ -147,7 +153,8 @@ class DetailCommentTableViewCell: UITableViewCell {
 //        }
         if let url = URL(string: model.avatar_user.asStringOrEmpty() ?? "") {
             let processor = DownsamplingImageProcessor(size: imageAvatar.bounds.size)
-            |> RoundCornerImageProcessor(cornerRadius: 5)
+            |> RoundCornerImageProcessor(cornerRadius: 20)
+            imageAvatar.clipsToBounds = true
             imageAvatar.kf.indicatorType = .activity
             imageAvatar.kf.setImage(
                 with: url,

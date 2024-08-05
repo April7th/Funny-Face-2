@@ -12,8 +12,8 @@ class PageHomeCLVCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        pageLabel.font = .quickSandSemiBold(size: 16)
-        pageLabel.textColor = .white
+        pageLabel.font = .quickSandSemiBold(size: 24)
+        pageLabel.textColor = .black
     }
 
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,13 +26,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InS-bI-lWN">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="139"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="144"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eJv-VS-kyP">
-                                <rect key="frame" x="0.0" y="5" width="36" height="36"/>
+                                <rect key="frame" x="8" y="5" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="CeQ-mJ-SFX"/>
-                                    <constraint firstAttribute="width" constant="36" id="aVD-0H-cHA"/>
+                                    <constraint firstAttribute="width" constant="50" id="Adb-zG-aIw"/>
+                                    <constraint firstAttribute="height" constant="50" id="hPy-MJ-Ehh"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="tr_cornerRadius">
@@ -41,26 +41,22 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw1-AC-bKN">
-                                <rect key="frame" x="46" y="5" width="374" height="93"/>
+                                <rect key="frame" x="66" y="5" width="364" height="93"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="User name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-Im-VOi">
-                                        <rect key="frame" x="8" y="5" width="361" height="16.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="68" height="16.333333333333332"/>
                                         <fontDescription key="fontDescription" name="RobotoSlab-Medium" family="Roboto Slab" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nvb-af-567">
-                                        <rect key="frame" x="8" y="26.333333333333329" width="361" height="14"/>
+                                        <rect key="frame" x="0.0" y="21.333333333333332" width="29.666666666666668" height="13.999999999999996"/>
                                         <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Tg-qx-6sZ">
-                                        <rect key="frame" x="336" y="8" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="4OU-kB-rHT"/>
-                                            <constraint firstAttribute="width" constant="30" id="pz6-2a-RCq"/>
-                                        </constraints>
+                                        <rect key="frame" x="310" y="41" width="54" height="44"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="hand-report"/>
                                         <connections>
@@ -68,32 +64,33 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Miy-5O-BuE">
-                                        <rect key="frame" x="296" y="8" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="HOo-LK-cZe"/>
-                                            <constraint firstAttribute="width" constant="30" id="HxC-Mz-3AR"/>
-                                        </constraints>
+                                        <rect key="frame" x="246" y="41" width="54" height="44"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="remove-ry-icon"/>
                                         <connections>
                                             <action selector="blockAccountPro" destination="ngO-za-c8F" eventType="touchDown" id="0yS-2v-Ico"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="3 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fF3-Fs-msJ">
+                                        <rect key="frame" x="310.66666666666669" y="1.3333333333333321" width="53.333333333333314" height="14"/>
+                                        <fontDescription key="fontDescription" name="RobotoSlab-Medium" family="Roboto Slab" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="0Tg-qx-6sZ" secondAttribute="trailing" constant="8" id="0pX-9U-Ekb"/>
-                                    <constraint firstAttribute="trailing" secondItem="Nvb-af-567" secondAttribute="trailing" constant="5" id="EmF-ex-f2Z"/>
-                                    <constraint firstItem="Nvb-af-567" firstAttribute="leading" secondItem="Fw1-AC-bKN" secondAttribute="leading" constant="8" id="OC9-gP-9cB"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E8e-Im-VOi" secondAttribute="bottom" constant="20" id="Ovf-KY-g4S"/>
-                                    <constraint firstItem="Nvb-af-567" firstAttribute="top" secondItem="E8e-Im-VOi" secondAttribute="bottom" constant="5" id="RUW-TQ-Lue"/>
-                                    <constraint firstItem="0Tg-qx-6sZ" firstAttribute="top" secondItem="Fw1-AC-bKN" secondAttribute="top" constant="8" id="bfq-Id-36V"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Nvb-af-567" secondAttribute="bottom" constant="10" id="haA-VI-a5w"/>
-                                    <constraint firstItem="E8e-Im-VOi" firstAttribute="top" secondItem="Fw1-AC-bKN" secondAttribute="top" constant="5" id="kqs-rv-Aas"/>
-                                    <constraint firstAttribute="trailing" secondItem="E8e-Im-VOi" secondAttribute="trailing" constant="5" id="mJr-kX-jTY"/>
-                                    <constraint firstItem="E8e-Im-VOi" firstAttribute="leading" secondItem="Fw1-AC-bKN" secondAttribute="leading" constant="8" id="squ-wx-IXR"/>
-                                    <constraint firstItem="0Tg-qx-6sZ" firstAttribute="leading" secondItem="Miy-5O-BuE" secondAttribute="trailing" constant="10" id="u5v-8I-8ja"/>
-                                    <constraint firstItem="Miy-5O-BuE" firstAttribute="top" secondItem="Fw1-AC-bKN" secondAttribute="top" constant="8" id="yXg-y2-tPg"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Tg-qx-6sZ" secondAttribute="bottom" constant="8" id="6p8-eh-bMG"/>
+                                    <constraint firstItem="E8e-Im-VOi" firstAttribute="leading" secondItem="Fw1-AC-bKN" secondAttribute="leading" id="GBP-3p-HBQ"/>
+                                    <constraint firstItem="E8e-Im-VOi" firstAttribute="top" secondItem="Fw1-AC-bKN" secondAttribute="top" id="GYY-y4-MTe"/>
+                                    <constraint firstItem="fF3-Fs-msJ" firstAttribute="centerY" secondItem="E8e-Im-VOi" secondAttribute="centerY" id="In3-fl-s66"/>
+                                    <constraint firstItem="0Tg-qx-6sZ" firstAttribute="leading" secondItem="Miy-5O-BuE" secondAttribute="trailing" constant="10" id="Kfb-P7-kOU"/>
+                                    <constraint firstItem="Nvb-af-567" firstAttribute="top" secondItem="E8e-Im-VOi" secondAttribute="bottom" constant="5" id="VaM-rF-Y3v"/>
+                                    <constraint firstAttribute="trailing" secondItem="fF3-Fs-msJ" secondAttribute="trailing" id="VyL-Mf-bEd"/>
+                                    <constraint firstItem="Miy-5O-BuE" firstAttribute="centerY" secondItem="0Tg-qx-6sZ" secondAttribute="centerY" id="aMs-G7-Syf"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Tg-qx-6sZ" secondAttribute="trailing" id="doN-83-tzs"/>
+                                    <constraint firstItem="Nvb-af-567" firstAttribute="leading" secondItem="Fw1-AC-bKN" secondAttribute="leading" id="hIU-Wr-sZH"/>
+                                    <constraint firstAttribute="height" constant="93" id="wNQ-3T-Kce"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="tr_cornerRadius">
@@ -101,20 +98,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="3 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fF3-Fs-msJ">
-                                <rect key="frame" x="56" y="106" width="53.333333333333343" height="14"/>
-                                <fontDescription key="fontDescription" name="RobotoSlab-Medium" family="Roboto Slab" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fI-jx-rGp">
-                                <rect key="frame" x="119.33333333333334" y="106" width="300.66666666666663" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text="3 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fI-jx-rGp">
+                                <rect key="frame" x="366.66666666666669" y="106" width="53.333333333333314" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="RobotoSlab-Medium" family="Roboto Slab" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="3 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0I-97-luN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" fixedFrame="YES" text="3 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0I-97-luN">
                                 <rect key="frame" x="366.66666666666669" y="125" width="53.333333333333314" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="RobotoSlab-Medium" family="Roboto Slab" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -122,20 +115,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="l0I-97-luN" secondAttribute="trailing" constant="10" id="1u8-Ab-mAM"/>
-                            <constraint firstItem="Fw1-AC-bKN" firstAttribute="top" secondItem="InS-bI-lWN" secondAttribute="top" constant="5" id="6Tk-iY-Ulw"/>
-                            <constraint firstItem="Fw1-AC-bKN" firstAttribute="leading" secondItem="eJv-VS-kyP" secondAttribute="trailing" constant="10" id="Arr-I4-c1g"/>
-                            <constraint firstItem="5fI-jx-rGp" firstAttribute="centerY" secondItem="fF3-Fs-msJ" secondAttribute="centerY" id="Fr3-Zb-bRb"/>
-                            <constraint firstItem="l0I-97-luN" firstAttribute="top" secondItem="5fI-jx-rGp" secondAttribute="bottom" constant="5" id="GRU-I7-eGW"/>
-                            <constraint firstItem="5fI-jx-rGp" firstAttribute="top" secondItem="Fw1-AC-bKN" secondAttribute="bottom" constant="8" symbolic="YES" id="JsZ-Fk-bHP"/>
-                            <constraint firstItem="fF3-Fs-msJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Fw1-AC-bKN" secondAttribute="bottom" constant="5" id="QVJ-2T-Z0K"/>
-                            <constraint firstAttribute="trailing" secondItem="5fI-jx-rGp" secondAttribute="trailing" constant="10" id="Uj0-uI-xdQ"/>
-                            <constraint firstItem="5fI-jx-rGp" firstAttribute="leading" secondItem="fF3-Fs-msJ" secondAttribute="trailing" constant="10" id="YHT-fM-qLL"/>
-                            <constraint firstItem="fF3-Fs-msJ" firstAttribute="leading" secondItem="Fw1-AC-bKN" secondAttribute="leading" constant="10" id="lVR-jR-FX9"/>
-                            <constraint firstAttribute="bottom" secondItem="l0I-97-luN" secondAttribute="bottom" id="nv5-jb-ona"/>
-                            <constraint firstAttribute="trailing" secondItem="Fw1-AC-bKN" secondAttribute="trailing" constant="10" id="qYP-aw-ujG"/>
-                            <constraint firstItem="eJv-VS-kyP" firstAttribute="top" secondItem="InS-bI-lWN" secondAttribute="top" constant="5" id="vSS-QU-1y6"/>
-                            <constraint firstItem="eJv-VS-kyP" firstAttribute="leading" secondItem="InS-bI-lWN" secondAttribute="leading" id="vcx-c7-5hP"/>
+                            <constraint firstItem="eJv-VS-kyP" firstAttribute="leading" secondItem="InS-bI-lWN" secondAttribute="leading" constant="8" id="9Ir-ce-6FK"/>
+                            <constraint firstItem="eJv-VS-kyP" firstAttribute="top" secondItem="InS-bI-lWN" secondAttribute="top" constant="5" id="D5y-Zj-Qzu"/>
+                            <constraint firstAttribute="trailing" secondItem="Fw1-AC-bKN" secondAttribute="trailing" id="DZS-fq-wZY"/>
+                            <constraint firstItem="Fw1-AC-bKN" firstAttribute="leading" secondItem="eJv-VS-kyP" secondAttribute="trailing" constant="8" id="exa-Vt-vg1"/>
+                            <constraint firstItem="Fw1-AC-bKN" firstAttribute="top" secondItem="InS-bI-lWN" secondAttribute="top" constant="5" id="jVp-p6-nYS"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="tr_cornerRadius">
@@ -146,10 +130,10 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="InS-bI-lWN" firstAttribute="top" secondItem="J0b-xo-QXa" secondAttribute="top" id="KZe-91-cmR"/>
-                    <constraint firstAttribute="trailing" secondItem="InS-bI-lWN" secondAttribute="trailing" id="Xcf-tn-fOH"/>
-                    <constraint firstItem="InS-bI-lWN" firstAttribute="leading" secondItem="J0b-xo-QXa" secondAttribute="leading" id="x6v-zR-Rja"/>
-                    <constraint firstAttribute="bottom" secondItem="InS-bI-lWN" secondAttribute="bottom" constant="5" id="zef-XK-QyV"/>
+                    <constraint firstAttribute="bottom" secondItem="InS-bI-lWN" secondAttribute="bottom" id="77e-mT-vTz"/>
+                    <constraint firstItem="InS-bI-lWN" firstAttribute="top" secondItem="J0b-xo-QXa" secondAttribute="top" id="cmB-MQ-9g1"/>
+                    <constraint firstAttribute="trailing" secondItem="InS-bI-lWN" secondAttribute="trailing" id="zBI-8V-Kq3"/>
+                    <constraint firstItem="InS-bI-lWN" firstAttribute="leading" secondItem="J0b-xo-QXa" secondAttribute="leading" id="zg6-y8-XvO"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="number" keyPath="tr_cornerRadius">
