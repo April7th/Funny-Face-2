@@ -49,7 +49,7 @@
                             <state key="normal" image="circelCheckbox-uncheck"/>
                             <state key="selected" image="circleChecbox"/>
                             <connections>
-                                <action selector="checkboxTapped:" destination="-1" eventType="touchDown" id="jqw-CS-emT"/>
+                                <action selector="checkbox1Tapped:" destination="-1" eventType="touchDown" id="jqw-CS-emT"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harassment and bullying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goe-P7-w3n">
@@ -84,7 +84,7 @@
                             <state key="normal" image="circelCheckbox-uncheck"/>
                             <state key="selected" image="circleChecbox"/>
                             <connections>
-                                <action selector="checkboxTapped:" destination="-1" eventType="touchDown" id="4ar-Tl-cc5"/>
+                                <action selector="checkbox2Tapped:" destination="-1" eventType="touchDown" id="BX2-2G-V6f"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cruel words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTr-Bd-1CY">
@@ -119,7 +119,7 @@
                             <state key="normal" image="circelCheckbox-uncheck"/>
                             <state key="selected" image="circleChecbox"/>
                             <connections>
-                                <action selector="checkboxTapped:" destination="-1" eventType="touchDown" id="9qV-KG-nfJ"/>
+                                <action selector="checkbox3Tapped:" destination="-1" eventType="touchDown" id="oWk-il-RFf"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harassment and bullying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ckp-ri-gin">
@@ -154,7 +154,7 @@
                             <state key="normal" image="circelCheckbox-uncheck"/>
                             <state key="selected" image="circleChecbox"/>
                             <connections>
-                                <action selector="checkboxTapped:" destination="-1" eventType="touchDown" id="YLt-Ab-AE3"/>
+                                <action selector="checkbox4Tapped:" destination="-1" eventType="touchDown" id="fLi-wu-Us0"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harassment and bullying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcd-0b-0CI">

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class ReportViewController: UIViewController {
     
@@ -21,7 +22,15 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var textFieldInput: UITextField!
     @IBOutlet weak var xButton:UIButton!
 
+    var reportText1: String = ""
+    var reportText2: String = ""
+    var reportText3: String = ""
+    var reportText4: String = ""
+
     
+    var test: String = ""
+    var id_comment: String = ""
+    var id_userComment: String = ""
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +50,7 @@ class ReportViewController: UIViewController {
         otherLabel.font = .quickSandBold(size: 16)
         
         
+        
         otherButton.setTitle("", for: .normal)
         cancelButton.setTitle("Cancel", for: .normal)
         okButton.setTitle("OK", for: .normal)
@@ -54,11 +64,43 @@ class ReportViewController: UIViewController {
 
     }
     
-    @IBAction func checkboxTapped(_ sender: UIButton) {
+    @IBAction func checkbox1Tapped(_ sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
+            reportText1 = ""
         } else {
             sender.isSelected = true
+            reportText1 = report1Label.text ?? ""
+        }
+    }
+    
+    @IBAction func checkbox2Tapped(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+            reportText2 = ""
+        } else {
+            sender.isSelected = true
+            reportText2 = report2Label.text ?? ""
+        }
+    }
+    
+    @IBAction func checkbox3Tapped(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+            reportText3 = ""
+        } else {
+            sender.isSelected = true
+            reportText3 = report3Label.text ?? ""
+        }
+    }
+    
+    @IBAction func checkbox4Tapped(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+            reportText4 = ""
+        } else {
+            sender.isSelected = true
+            reportText4 = report4Label.text ?? ""
         }
     }
     
@@ -67,11 +109,55 @@ class ReportViewController: UIViewController {
     }
     
     @IBAction func okButtonTapped(_ sender: UIButton) {
-        
+        if let id_user_report: Int = KeychainWrapper.standard.integer(forKey: "id_user"){
+            let param = ["id_comment": self.id_comment,
+                         "report_reason": "\(textFieldInput.text), \(reportText1), \(reportText2), \(reportText3), \(reportText4)",
+                         "id_user_report": "\(id_user_report)",
+                         "id_user_comment": id_userComment]
+            print("Param is \(param)")
+            APIService.shared.reportComment(param: param) {result, error in
+                if let success = result {
+                    print("result is: \(success)")
+                    let alert = UIAlertController(title: "Send Report Ok", message: "Please Wait For Admin Check Your Report", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Done Report", style: .default, handler: { action in
+                        switch action.style{
+                        case .default:
+                            self.dismiss(animated: true)
+                        case .cancel:
+                            self.dismiss(animated: true)
+                        case .destructive:
+                            self.dismiss(animated: true)
+                        }
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                print("Success: \(result)")
+            }
+        }else{
+            print("NO LOGIN")
+            let alert = UIAlertController(title: "Alert", message: "Please Login Account", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Login To Report", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                case .cancel:
+                    print("cancel")
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+
     }
     
     @IBAction func otherButtonTapped(_ sender: UIButton) {
-        
+        print(reportText1)
+        print(reportText2)
+        print(reportText3)
+        print(reportText4)
+
     }
 
    

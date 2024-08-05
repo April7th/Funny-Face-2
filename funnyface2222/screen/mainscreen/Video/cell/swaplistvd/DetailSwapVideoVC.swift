@@ -185,6 +185,8 @@ class DetailSwapVideoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        labelUserName.isHidden = true
+        
         saveToMyCollectionButton.titleLabel?.font = .quickSandBold(size: 14)
         saveToMyCollectionButton.layer.cornerRadius = 10
         saveToMyCollectionButton.layer.masksToBounds = true

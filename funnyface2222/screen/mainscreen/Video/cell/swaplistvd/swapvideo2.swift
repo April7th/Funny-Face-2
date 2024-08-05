@@ -43,8 +43,13 @@ class swapvideo2: UIViewController {
     var countProgress: Int = 0
     
     @IBAction func start(){
+        
+        startButton.setTitle("Cancel", for: .normal)
+        startButton.backgroundColor = .red
+
         if oldURLBool == false{
             self.detectFaces(in: self.selectedImage)
+
         }else{
 //            self.circularSlider.maximumValue = 180.0
 //            var timeCount = 0.0
@@ -270,6 +275,9 @@ class swapvideo2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
         progressView.setProgress(0, animated: false)
         progressView.layer.cornerRadius = 8
         progressView.layer.masksToBounds = true
@@ -281,7 +289,7 @@ class swapvideo2: UIViewController {
         startButton.layer.masksToBounds = true
         
         progressCountLabel.text = "\(countProgress)% processing progress, please wait! "
-        
+        progressCountLabel.font = .quickSandBold(size: 16)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleImageNotification(_:)), name: NSNotification.Name(rawValue: "Notification_SEND_IMAGES"), object: nil)
         

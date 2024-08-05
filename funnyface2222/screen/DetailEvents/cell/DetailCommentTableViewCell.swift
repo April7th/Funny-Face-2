@@ -84,18 +84,18 @@ class DetailCommentTableViewCell: UITableViewCell {
         }
     }
     
-//    @IBAction func reportCommentAction(){
-//        var reportView = ReportCommentVC()
-//        reportView.deviceName = self.deviceLabel.text ?? ""
-//        reportView.userName = self.userNameLabel.text ?? ""
-//        reportView.location = self.locationLabel.text ?? ""
-//        reportView.id_user_comment = self.id_user_comment
-//        reportView.id_comment = self.id_comment
-//        reportView.id_user_report = id_user_comment //
-//        reportView.linkAvatar = linkAvatar
-//        reportView.descriptionMain = self.descriptionMain
-//        reportView.time = self.thoi_gian_release
-//        reportView.modalPresentationStyle = .fullScreen
+    @IBAction func reportCommentAction(){
+        var reportView = ReportCommentVC()
+        reportView.deviceName = self.deviceLabel.text ?? ""
+        reportView.userName = self.userNameLabel.text ?? ""
+        reportView.location = self.locationLabel.text ?? ""
+        reportView.id_user_comment = self.id_user_comment
+        reportView.id_comment = self.id_comment
+        reportView.id_user_report = id_user_comment //
+        reportView.linkAvatar = linkAvatar
+        reportView.descriptionMain = self.descriptionMain
+        reportView.time = self.thoi_gian_release
+        reportView.modalPresentationStyle = .fullScreen
 //        if let parentVC = self.parentViewController as? DetailEventsViewController{
 //            parentVC.present(reportView, animated: true, completion: nil)
 //        }
@@ -103,7 +103,7 @@ class DetailCommentTableViewCell: UITableViewCell {
 //            parentVC.present(reportView, animated: true, completion: nil)
 //        }
 //        
-//    }
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

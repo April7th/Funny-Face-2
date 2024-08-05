@@ -19,6 +19,18 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
     @IBOutlet weak var searchView: UIView!
 
 
+    var linkAvatar:String = ""
+    var userName:String = ""
+    var descriptionMain:String = ""
+    var time:String = ""
+    var location:String = ""
+    var deviceName:String = ""
+    var id_user_comment:String = ""
+    var id_comment:String = ""
+    var id_user_report:String = ""
+    
+    var test: String = ""
+    
     var dataList_All: [Sukien] = []
     var seTabBarItem: UITabBarItem? {
         return UITabBarItem(title: "", image: R.image.tab_comments(), tag: 0)
@@ -266,15 +278,19 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
     
     func showReportView() {
         let detailVC = ReportCommentVC(nibName: "ReportCommentVC", bundle: nil)
+        
         present(detailVC, animated: true, completion: nil)
     }
     
     func showReportViewController() {
-           let reportVC = ReportViewController(nibName: "ReportViewController", bundle: nil)
-           reportVC.modalPresentationStyle = .custom
-           reportVC.transitioningDelegate = self
-           present(reportVC, animated: true, completion: nil)
-       }
+        let reportVC = ReportViewController(nibName: "ReportViewController", bundle: nil)
+        reportVC.modalPresentationStyle = .custom
+        reportVC.transitioningDelegate = self
+        reportVC.id_comment = id_comment
+        reportVC.id_userComment = id_user_comment
+        reportVC.test = test
+        present(reportVC, animated: true, completion: nil)
+    }
 
 }
 // MARK: - Extension UITableView
@@ -295,6 +311,8 @@ extension CommentsViewController : UITableViewDataSource {
         cell.thoi_gian_release = dataComment[indexPath.row].thoi_gian_release ?? ""
         cell.noi_dung_cmt = dataComment[indexPath.row].noi_dung_cmt ?? ""
         cell.configCellComment(model: dataComment[indexPath.row])
+        
+        
         return cell
     }
     
@@ -306,11 +324,17 @@ extension CommentsViewController : UITableViewDataSource {
         let delete = UIContextualAction(style: .normal, title: "Delete") { (action, view, completionHandler) in
             print("delete \(indexPath.row)")
             
+            
+            self.showReportView()
             completionHandler(true)
         }
 
         let report = UIContextualAction(style: .normal, title: "Report") { (action, view, handler) in
-            // Chuyển sang màn hình NIB
+            
+            self.id_comment = "\(self.dataComment[indexPath.row].id_comment)"
+            self.id_user_comment = "\(self.dataComment[indexPath.row].id_user)"
+            self.test = "Just testing"
+            
             self.showReportViewController()
             handler(true)
         }
