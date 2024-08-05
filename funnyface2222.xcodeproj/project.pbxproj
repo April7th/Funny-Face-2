@@ -17,9 +17,13 @@
 		B71044112C53BB360093FDFE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71044102C53BB360093FDFE /* Fonts.swift */; };
 		B7377FC22C5CDC28002E45B8 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */; };
 		B7377FC32C5CDC28002E45B8 /* ProfileSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */; };
+		B748239C2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B748239B2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib */; };
+		B748239D2C60E0E600DE3C34 /* CommentNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B748239A2C60E0E600DE3C34 /* CommentNotificationTableViewCell.swift */; };
 		B7552F552C5D19DA0017722F /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7552F542C5D19DA0017722F /* EditProfileViewController.xib */; };
 		B7552F562C5D19DA0017722F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7552F532C5D19DA0017722F /* EditProfileViewController.swift */; };
 		B75C30692C53D19C00B60DB2 /* Starborn.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B75C30662C53D19C00B60DB2 /* Starborn.ttf */; };
+		B7D9087C2C60F87700458A21 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D9087A2C60F87700458A21 /* ReportViewController.swift */; };
+		B7D9087D2C60F87700458A21 /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D9087B2C60F87700458A21 /* ReportViewController.xib */; };
 		B7F645392C5CCB4700261A02 /* ListToProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7F645382C5CCB4700261A02 /* ListToProfileViewController.xib */; };
 		B7F6453A2C5CCB4700261A02 /* ListToProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F645372C5CCB4700261A02 /* ListToProfileViewController.swift */; };
 		CE4311AC50DD594411F5C51F /* Pods_funnyface2222.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A400DC692F4EF37497AE5 /* Pods_funnyface2222.framework */; };
@@ -228,9 +232,13 @@
 		B71044102C53BB360093FDFE /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingViewController.xib; sourceTree = "<group>"; };
+		B748239A2C60E0E600DE3C34 /* CommentNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNotificationTableViewCell.swift; sourceTree = "<group>"; };
+		B748239B2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentNotificationTableViewCell.xib; sourceTree = "<group>"; };
 		B7552F532C5D19DA0017722F /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B7552F542C5D19DA0017722F /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		B75C30662C53D19C00B60DB2 /* Starborn.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Starborn.ttf; sourceTree = "<group>"; };
+		B7D9087A2C60F87700458A21 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		B7D9087B2C60F87700458A21 /* ReportViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportViewController.xib; sourceTree = "<group>"; };
 		B7F645372C5CCB4700261A02 /* ListToProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListToProfileViewController.swift; sourceTree = "<group>"; };
 		B7F645382C5CCB4700261A02 /* ListToProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListToProfileViewController.xib; sourceTree = "<group>"; };
 		CB3A400DC692F4EF37497AE5 /* Pods_funnyface2222.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funnyface2222.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -897,6 +905,8 @@
 				E66C938B2B4E559600B74491 /* CommentsViewController.xib */,
 				E66C938C2B4E559600B74491 /* CommentsModel.swift */,
 				E66C93872B4E559600B74491 /* Cell */,
+				B7D9087A2C60F87700458A21 /* ReportViewController.swift */,
+				B7D9087B2C60F87700458A21 /* ReportViewController.xib */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -1103,6 +1113,8 @@
 				E67DF4622B551FD80074D573 /* StoryboardPageTabMenuViewController.swift */,
 				E67DF4642B5520410074D573 /* testViewController.swift */,
 				E67DF4662B5520B70074D573 /* mhtestViewController.swift */,
+				B748239A2C60E0E600DE3C34 /* CommentNotificationTableViewCell.swift */,
+				B748239B2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib */,
 			);
 			path = selectcontroller;
 			sourceTree = "<group>";
@@ -1331,6 +1343,7 @@
 				E66C94082B4E559600B74491 /* ImagesGocTBVCell.xib in Resources */,
 				E66C93002B4E554000B74491 /* Template3TBVCell.xib in Resources */,
 				E6C6E9BB2B57D2100055D260 /* SwapImageAlbum.xib in Resources */,
+				B748239C2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib in Resources */,
 				E6C6E99B2B565B7A0055D260 /* cacluachonimageclv.xib in Resources */,
 				B710440D2C53B5340093FDFE /* Quicksand-Medium.ttf in Resources */,
 				E69E059C2B52EF8100E9D2DB /* SwapVideoDetailVC.xib in Resources */,
@@ -1364,6 +1377,7 @@
 				E64E478F2B5A7112007DDAD0 /* VideoCellCollectionViewCell.xib in Resources */,
 				E66C94002B4E559600B74491 /* HowToUseVC.xib in Resources */,
 				E66C93EB2B4E559600B74491 /* CommentTableViewCell.xib in Resources */,
+				B7D9087D2C60F87700458A21 /* ReportViewController.xib in Resources */,
 				E66C92DE2B4E52EC00B74491 /* Main.storyboard in Resources */,
 				E6B88CB12B4FD773005A02E6 /* newSwapvideo.xib in Resources */,
 				E68D67222B5E786600E410FC /* mainpage.storyboard in Resources */,
@@ -1521,6 +1535,7 @@
 				B7F6453A2C5CCB4700261A02 /* ListToProfileViewController.swift in Sources */,
 				E66C93532B4E558700B74491 /* BaseService.swift in Sources */,
 				E66C932A2B4E557200B74491 /* APIKeyIMGBB.swift in Sources */,
+				B748239D2C60E0E600DE3C34 /* CommentNotificationTableViewCell.swift in Sources */,
 				E66706A42B678E5600CDF9EC /* EventView.swift in Sources */,
 				E66C94092B4E559600B74491 /* ImagesGocTBVCell.swift in Sources */,
 				E66C93E02B4E559600B74491 /* DetailCommentTableViewCell.swift in Sources */,
@@ -1546,6 +1561,7 @@
 				E66C93C52B4E559600B74491 /* SlideMenuViewController.swift in Sources */,
 				E6C6E9B32B568E8B0055D260 /* thanhviencell2.swift in Sources */,
 				E6C6E9BE2B590D7A0055D260 /* listSwaped.swift in Sources */,
+				B7D9087C2C60F87700458A21 /* ReportViewController.swift in Sources */,
 				E66C93512B4E558700B74491 /* ConfigurationBase.swift in Sources */,
 				E68D671B2B5E77E200E410FC /* mhthunhat.swift in Sources */,
 				E66C93252B4E556A00B74491 /* HomeServiceConfiguration.swift in Sources */,

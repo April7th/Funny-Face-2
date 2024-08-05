@@ -421,47 +421,47 @@
                                     <constraint firstItem="y7Z-MW-1OB" firstAttribute="centerY" secondItem="Gtm-4O-syH" secondAttribute="centerY" id="vgQ-5W-2tN"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X0s-oN-r4i">
-                                <rect key="frame" x="0.0" y="99" width="393" height="753"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wrx-rJ-MWy">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="y4x-ng-KCV">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OUJ-1c-zMg">
-                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FjL-Qk-FON">
+                                <rect key="frame" x="0.0" y="119" width="393" height="733"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NHh-XA-mIl">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NHh-XA-mIl" id="75Q-Z5-hWH">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7xu-oY-j6b" id="C1G-aW-4vI"/>
+                                    <outlet property="delegate" destination="7xu-oY-j6b" id="dH9-83-N6r"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="M4D-cQ-quZ"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="X0s-oN-r4i" firstAttribute="trailing" secondItem="M4D-cQ-quZ" secondAttribute="trailing" id="3z5-S3-Qo7"/>
-                            <constraint firstItem="X0s-oN-r4i" firstAttribute="top" secondItem="Gtm-4O-syH" secondAttribute="bottom" id="ETO-oU-agc"/>
-                            <constraint firstItem="X0s-oN-r4i" firstAttribute="leading" secondItem="M4D-cQ-quZ" secondAttribute="leading" id="Ftx-5M-PwO"/>
+                            <constraint firstItem="FjL-Qk-FON" firstAttribute="leading" secondItem="M4D-cQ-quZ" secondAttribute="leading" id="0nv-86-7aW"/>
                             <constraint firstItem="Gtm-4O-syH" firstAttribute="top" secondItem="M4D-cQ-quZ" secondAttribute="top" id="OKl-7h-qYf"/>
                             <constraint firstItem="M4D-cQ-quZ" firstAttribute="trailing" secondItem="Gtm-4O-syH" secondAttribute="trailing" id="PBC-U4-xQk"/>
-                            <constraint firstAttribute="bottom" secondItem="X0s-oN-r4i" secondAttribute="bottom" id="bmL-WZ-Zfg"/>
+                            <constraint firstItem="FjL-Qk-FON" firstAttribute="trailing" secondItem="M4D-cQ-quZ" secondAttribute="trailing" id="SNl-yJ-bfr"/>
+                            <constraint firstAttribute="bottom" secondItem="FjL-Qk-FON" secondAttribute="bottom" id="ffK-N3-VT9"/>
                             <constraint firstItem="Gtm-4O-syH" firstAttribute="leading" secondItem="M4D-cQ-quZ" secondAttribute="leading" id="foD-5v-PbI"/>
+                            <constraint firstItem="FjL-Qk-FON" firstAttribute="top" secondItem="Gtm-4O-syH" secondAttribute="bottom" constant="20" id="rl7-EM-vej"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentNotiTableView" destination="FjL-Qk-FON" id="MQC-5r-4zd"/>
                         <outlet property="notiLabel" destination="y7Z-MW-1OB" id="g0i-E9-eej"/>
                         <outlet property="searchButton" destination="XDh-CM-9hT" id="ryz-F1-wmy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y34-KT-LNo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709.16030534351137" y="-15.492957746478874"/>
+            <point key="canvasLocation" x="707.63358778625957" y="-15.492957746478874"/>
         </scene>
         <!--Mhtest View Controller-->
         <scene sceneID="VXT-jI-O7I">
@@ -506,7 +506,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

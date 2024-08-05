@@ -32,8 +32,6 @@ class DetailCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var deviceLabel: UILabel!
     
-    @IBOutlet weak var buttonReport: UIButton!
-    @IBOutlet weak var buttonDelete: UIButton!
 
     var descriptionMain:String = ""
     var id_comment:String = ""
@@ -46,8 +44,7 @@ class DetailCommentTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        buttonReport.setTitle("", for: .normal)
-        buttonDelete.setTitle("", for: .normal)
+        
         userNameLabel.font = .quickSandBold(size: 16)
         descriptionLabel.font = .quickSandRegular(size: 12)
         descriptionLabel.textColor = UIColor(hexString: "#bfbfbf")
@@ -87,26 +84,26 @@ class DetailCommentTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func reportCommentAction(){
-        var reportView = ReportCommentVC()
-        reportView.deviceName = self.deviceLabel.text ?? ""
-        reportView.userName = self.userNameLabel.text ?? ""
-        reportView.location = self.locationLabel.text ?? ""
-        reportView.id_user_comment = self.id_user_comment
-        reportView.id_comment = self.id_comment
-        reportView.id_user_report = id_user_comment //
-        reportView.linkAvatar = linkAvatar
-        reportView.descriptionMain = self.descriptionMain
-        reportView.time = self.thoi_gian_release
-        reportView.modalPresentationStyle = .fullScreen
-        if let parentVC = self.parentViewController as? DetailEventsViewController{
-            parentVC.present(reportView, animated: true, completion: nil)
-        }
-        if let parentVC = self.parentViewController as? CommentsViewController{
-            parentVC.present(reportView, animated: true, completion: nil)
-        }
-        
-    }
+//    @IBAction func reportCommentAction(){
+//        var reportView = ReportCommentVC()
+//        reportView.deviceName = self.deviceLabel.text ?? ""
+//        reportView.userName = self.userNameLabel.text ?? ""
+//        reportView.location = self.locationLabel.text ?? ""
+//        reportView.id_user_comment = self.id_user_comment
+//        reportView.id_comment = self.id_comment
+//        reportView.id_user_report = id_user_comment //
+//        reportView.linkAvatar = linkAvatar
+//        reportView.descriptionMain = self.descriptionMain
+//        reportView.time = self.thoi_gian_release
+//        reportView.modalPresentationStyle = .fullScreen
+//        if let parentVC = self.parentViewController as? DetailEventsViewController{
+//            parentVC.present(reportView, animated: true, completion: nil)
+//        }
+//        if let parentVC = self.parentViewController as? CommentsViewController{
+//            parentVC.present(reportView, animated: true, completion: nil)
+//        }
+//        
+//    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -148,9 +145,7 @@ class DetailCommentTableViewCell: UITableViewCell {
     }
     
     func configCellComment(model: DataComment) {
-//        if let url = URL(string: model.avatar_user.asStringOrEmpty()) {
-//            imageAvatar.af.setImage(withURL: url)
-//        }
+
         if let url = URL(string: model.avatar_user.asStringOrEmpty() ?? "") {
             let processor = DownsamplingImageProcessor(size: imageAvatar.bounds.size)
             |> RoundCornerImageProcessor(cornerRadius: 20)

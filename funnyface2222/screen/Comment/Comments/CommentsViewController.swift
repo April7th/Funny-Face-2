@@ -13,9 +13,11 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
     @IBOutlet weak var collectionView: UICollectionView!
     var indexSelectPage = 0
     @IBOutlet weak var textFieldSearch: UITextField!
-    @IBOutlet weak var buttonBack: UIButton!
+//    @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var buttonSearch: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var searchView: UIView!
+
 
     var dataList_All: [Sukien] = []
     var seTabBarItem: UITabBarItem? {
@@ -138,8 +140,21 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
         callAPIgetdataComment()
         textFieldSearch.delegate = self
         collectionView.register(UINib(nibName: PageHomeCLVCell.className, bundle: nil), forCellWithReuseIdentifier: PageHomeCLVCell.className)
-        buttonBack.setTitle("", for: .normal)
+        
         buttonSearch.setTitle("", for: .normal)
+        searchView.layer.cornerRadius = 15
+        searchView.layer.masksToBounds = true
+        scrollToPageSellected()
+        
+        textFieldSearch.attributedPlaceholder = NSAttributedString(
+            string: "Search...",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.quickSandRegular(size: 14)]
+        )
+    }
+    
+    private func scrollToPageSellected() {
+        let indexPath = IndexPath(item: indexSelectPage, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     func setupUI() {
@@ -149,7 +164,7 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
         commentTableView.register(cellType: DetailCommentTableViewCell.self)
         commentTableView.separatorStyle = .none
         if let url = URL(string: AppConstant.linkAvatar.asStringOrEmpty()) {
-            profileImage.af.setImage(withURL: url)
+//            profileImage.af.setImage(withURL: url)
         }
         
         refreshControl = UIRefreshControl()
@@ -167,14 +182,7 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
         refreshControl.endRefreshing()
     }
     
-    @IBAction func profileBtn(_ sender: Any) {
-        let vc = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
-        vc.userId = AppConstant.userId ?? 0
-        vc.callAPIRecentComment()
-        vc.callApiProfile()
-        vc.callAPIUserEvent()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+
     
     func callAPIgetdataComment() {
         APIService.shared.getPageComment(page: 1, idUser: String(AppConstant.userId ?? 0)) { result, error in
@@ -234,6 +242,40 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
         }
         
     }
+    
+    @IBAction func nextPageButton(_ sender: Any) {
+        indexSelectPage += 1
+        scrollToPageSellected()
+        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.commentTableView.reloadData()
+        }
+
+    }
+    
+    @IBAction func previousPageButton(_ sender: Any) {
+        indexSelectPage -= 1
+        scrollToPageSellected()
+        commentTableView.reloadData()
+        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.commentTableView.reloadData()
+
+        }
+    }
+    
+    func showReportView() {
+        let detailVC = ReportCommentVC(nibName: "ReportCommentVC", bundle: nil)
+        present(detailVC, animated: true, completion: nil)
+    }
+    
+    func showReportViewController() {
+           let reportVC = ReportViewController(nibName: "ReportViewController", bundle: nil)
+           reportVC.modalPresentationStyle = .custom
+           reportVC.transitioningDelegate = self
+           present(reportVC, animated: true, completion: nil)
+       }
+
 }
 // MARK: - Extension UITableView
 extension CommentsViewController : UITableViewDataSource {
@@ -257,8 +299,30 @@ extension CommentsViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 70
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .normal, title: "Delete") { (action, view, completionHandler) in
+            print("delete \(indexPath.row)")
+            
+            completionHandler(true)
+        }
+
+        let report = UIContextualAction(style: .normal, title: "Report") { (action, view, handler) in
+            // Chuyển sang màn hình NIB
+            self.showReportViewController()
+            handler(true)
+        }
+        
+        delete.backgroundColor = UIColor(hexString: "#FF0000")
+        report.backgroundColor = UIColor(hexString: "#02AD44")
+
+        
+        let swipe = UISwipeActionsConfiguration(actions: [delete, report])
+        return swipe
+    }
+    
 }
 
 extension CommentsViewController: UITableViewDelegate {
@@ -332,6 +396,7 @@ extension CommentsViewController: UICollectionViewDelegate, UICollectionViewData
                 self.collectionView.reloadData()
             }
         }
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -376,9 +441,14 @@ extension CommentsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if UIDevice.current.userInterfaceIdiom == .pad{
-            return CGSize(width: UIScreen.main.bounds.width/24 - 3, height: 50)
+            return CGSize(width: UIScreen.main.bounds.width/24 - 2, height: 50)
         }
-        return CGSize(width: UIScreen.main.bounds.width/12 - 3, height: 50)
+        return CGSize(width: UIScreen.main.bounds.width/12 - 2, height: 50)
     }
 }
 
+extension CommentsViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}

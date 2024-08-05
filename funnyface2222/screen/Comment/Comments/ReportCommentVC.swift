@@ -71,6 +71,8 @@ class ReportCommentVC: UIViewController {
     }
     
     override func viewDidLoad() {
+        view.layer.cornerRadius = 12
+        view.layer.masksToBounds = true
         super.viewDidLoad()
         buttonBackApp.setTitle("", for: .normal)
         userNameLabel.text = userName
