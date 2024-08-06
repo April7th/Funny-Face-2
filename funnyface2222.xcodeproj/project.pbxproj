@@ -15,6 +15,8 @@
 		B710440E2C53B5340093FDFE /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B71044082C53B5340093FDFE /* Quicksand-Regular.ttf */; };
 		B710440F2C53B5340093FDFE /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B71044092C53B5340093FDFE /* Quicksand-SemiBold.ttf */; };
 		B71044112C53BB360093FDFE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71044102C53BB360093FDFE /* Fonts.swift */; };
+		B735F7B32C6202B200D8EAAD /* EventCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B735F7B22C6202B200D8EAAD /* EventCommentTableViewCell.xib */; };
+		B735F7B42C6202B200D8EAAD /* EventCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B735F7B12C6202B200D8EAAD /* EventCommentTableViewCell.swift */; };
 		B7377FC22C5CDC28002E45B8 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */; };
 		B7377FC32C5CDC28002E45B8 /* ProfileSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */; };
 		B748239C2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B748239B2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib */; };
@@ -230,6 +232,8 @@
 		B71044082C53B5340093FDFE /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
 		B71044092C53B5340093FDFE /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
 		B71044102C53BB360093FDFE /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		B735F7B12C6202B200D8EAAD /* EventCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCommentTableViewCell.swift; sourceTree = "<group>"; };
+		B735F7B22C6202B200D8EAAD /* EventCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCommentTableViewCell.xib; sourceTree = "<group>"; };
 		B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingViewController.xib; sourceTree = "<group>"; };
 		B748239A2C60E0E600DE3C34 /* CommentNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -851,9 +855,11 @@
 			isa = PBXGroup;
 			children = (
 				E66C93752B4E559600B74491 /* DetailEventsViewController.swift */,
+				E66C937B2B4E559600B74491 /* DetailEventsViewController.xib */,
+				B735F7B12C6202B200D8EAAD /* EventCommentTableViewCell.swift */,
+				B735F7B22C6202B200D8EAAD /* EventCommentTableViewCell.xib */,
 				E66C93762B4E559600B74491 /* models */,
 				E66C93782B4E559600B74491 /* cell */,
-				E66C937B2B4E559600B74491 /* DetailEventsViewController.xib */,
 			);
 			path = DetailEvents;
 			sourceTree = "<group>";
@@ -1388,6 +1394,7 @@
 				E6111ECC2B68E58500BD49AA /* newtemplate.xib in Resources */,
 				E66706A52B678E5600CDF9EC /* EventView.xib in Resources */,
 				E6C6E99F2B565B920055D260 /* thanhvienimagecon.xib in Resources */,
+				B735F7B32C6202B200D8EAAD /* EventCommentTableViewCell.xib in Resources */,
 				E66C92FA2B4E554000B74491 /* Template2TBVCell.xib in Resources */,
 				E66C93C62B4E559600B74491 /* SlideMenuTableViewCell.xib in Resources */,
 				B710440F2C53B5340093FDFE /* Quicksand-SemiBold.ttf in Resources */,
@@ -1509,6 +1516,7 @@
 				E66C93452B4E558000B74491 /* LoadingView.swift in Sources */,
 				E66C93DA2B4E559600B74491 /* DetailVideoModel.swift in Sources */,
 				E6C6E9C42B59129E0055D260 /* ImagedModel.swift in Sources */,
+				B735F7B42C6202B200D8EAAD /* EventCommentTableViewCell.swift in Sources */,
 				E66C94112B4E559600B74491 /* RegisterAPI.swift in Sources */,
 				E66C93262B4E556A00B74491 /* HomeModel.swift in Sources */,
 				E6C6E99A2B565B7A0055D260 /* cacluachonimageclv.swift in Sources */,

@@ -16,11 +16,14 @@ import UIKit
 import SETabView
 import AlamofireImage
 import DeviceKit
+import Kingfisher
 
 class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
     
     var userId: Int = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
     var dataUserEvent: [Sukien] = []
+    var imageURLPass: String = ""
+    var userNamePass: String = ""
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textFieldSearch: UITextField!
@@ -44,6 +47,7 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         callAPIUserEvent()
+        callApiProfile()
     }
     
     
@@ -56,7 +60,15 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
         collectionView.register(UINib(nibName: PageHomeCLVCell.className, bundle: nil), forCellWithReuseIdentifier: PageHomeCLVCell.className)
         setupUI()
         callApiHome()
+        scrollToPageSellected()
+        avatarImage.contentMode = .scaleAspectFill
     }
+    
+    private func scrollToPageSellected() {
+        let indexPath = IndexPath(item: indexSelectPage, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         APIService.shared.searchComment(searchText:textFieldSearch.text ?? "" ){result, error in
             if let result = result{
@@ -87,13 +99,7 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
         homeTableView.register(cellType: Template4TBVCell.self)
         homeTableView.separatorStyle = .none
         
-        if let url = URL(string: AppConstant.linkAvatar.asStringOrEmpty()){
-            avatarImage.af.setImage(withURL: url)
-        } else {
-            avatarImage.image = UIImage(named: "noavatar")
-        }
-        
-        
+       
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull For Refresh")
@@ -102,7 +108,8 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
         
         collectionView.layer.cornerRadius = 12
         collectionView.layer.masksToBounds = true
-        collectionView.backgroundColor = UIColor(hexString: "191919")
+        collectionView.backgroundColor = UIColor.clear
+        
         
     }
     
@@ -140,6 +147,45 @@ class EventView: UIViewController, SETabItemProvider,UITextFieldDelegate {
                 
 
 //                self.eventCountLabel.text = String(data.count)
+            }
+        }
+    }
+    
+    
+    func callApiProfile() {
+        APIService.shared.getProfile(user: self.userId ) { result, error in
+            if let success = result {
+                if let idUser = success.id_user{
+                    self.userNamePass = success.user_name ?? ""
+                    let escapedString = success.link_avatar?.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
+                    self.imageURLPass = escapedString ?? ""
+                    if let url = URL(string: escapedString ?? "") {
+                        
+                        let processor = DownsamplingImageProcessor(size: self.avatarImage.bounds.size)
+                        |> RoundCornerImageProcessor(cornerRadius: 50)
+                        self.avatarImage.kf.indicatorType = .activity
+                        self.avatarImage.backgroundColor = .clear
+                        self.avatarImage.contentMode = .scaleAspectFill
+                        self.avatarImage.kf.setImage(
+                            with: url,
+                            placeholder: UIImage(named: "placeholderImage"),
+                            options: [
+                                .processor(processor),
+                                .scaleFactor(UIScreen.main.scale),
+                                .transition(.fade(1)),
+                                .cacheOriginalImage
+                            ])
+                        {
+                            result in
+                            switch result {
+                            case .success(let value):
+                                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                            case .failure(let error):
+                                print("Job failed: \(error.localizedDescription)")
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -237,6 +283,8 @@ extension EventView: UITableViewDelegate{
             if listSukien[indexPath.row].sukien.count > 0{
                 vc.idToanBoSuKien = listSukien[indexPath.row].sukien[0].id ?? 0
             }
+            vc.imageURL = imageURLPass
+            vc.currentUserName = userNamePass
             vc.dataDetail = dataDetail
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
@@ -258,6 +306,8 @@ extension EventView: UICollectionViewDelegate, UICollectionViewDataSource {
                 self.collectionView.reloadData()
             }
         }
+        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 300
@@ -268,17 +318,12 @@ extension EventView: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PageHomeCLVCell.className, for: indexPath) as! PageHomeCLVCell
         cell.pageLabel.text = String(indexPath.row + 1)
         if indexPath.row == indexSelectPage{
-            cell.backgroundColor = UIColor(hexString: "#1DB954")
-            cell.layer.cornerRadius = cell.frame.height/2
-//            cell.layer.masksToBounds = true
-            cell.clipsToBounds = true
-
+            cell.backgroundColor = UIColor.white
+            cell.pageLabel.textColor = UIColor.black
             
         }else{
             cell.backgroundColor = UIColor.clear
-            cell.layer.cornerRadius = cell.frame.height/2
-//            cell.layer.masksToBounds = true
-            cell.clipsToBounds = true
+            cell.pageLabel.textColor = UIColor.white
         }
         return cell
     }

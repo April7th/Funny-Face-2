@@ -8,6 +8,7 @@
 import UIKit
 import AlamofireImage
 import SwiftKeychainWrapper
+import Kingfisher
 
 class DetailEventsViewController: UIViewController {
     var dataDetail: EventModel?
@@ -20,6 +21,9 @@ class DetailEventsViewController: UIViewController {
     var ListIDUser_Block:[Int] = [Int]()
     @IBOutlet weak var buttonBack: UIButton!
 
+    
+    var imageURL: String = ""
+    var usernNameString: String = ""
     //    var initialTransform: CGAffineTransform = .identity
     var initialImageScale: CGFloat = 1.0
     
@@ -30,7 +34,9 @@ class DetailEventsViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var viewDetailSuKien: UIView!
     var ToanBoSuKien_Trong1LanChay : [EventModel] = [EventModel]()
-    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    
     @IBOutlet weak var keyboardScroll: UIScrollView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var commentTextField: UITextField!
@@ -47,12 +53,12 @@ class DetailEventsViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       // backgroundView.gradient()
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameDetailLabel.textColor = UIColor.black
-        self.titleLabel.textColor = UIColor.black
+        self.titleLabel.textColor = UIColor.white
         self.descriptionLabel.textColor = UIColor.black
         self.commentTextField.textColor = UIColor.black
         setupUI()
@@ -66,7 +72,32 @@ class DetailEventsViewController: UIViewController {
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.ActionClickToSubSuKien))
         self.viewDetailSuKien.addGestureRecognizer(gesture)
         
-        
+        if let url = URL(string: imageURL ?? "") {
+            
+            let processor = DownsamplingImageProcessor(size: self.avatarImage.bounds.size)
+            |> RoundCornerImageProcessor(cornerRadius: 50)
+            self.avatarImage.kf.indicatorType = .activity
+            self.avatarImage.backgroundColor = .clear
+            self.avatarImage.contentMode = .scaleAspectFill
+            self.avatarImage.kf.setImage(
+                with: url,
+                placeholder: UIImage(named: "placeholderImage"),
+                options: [
+                    .processor(processor),
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+            {
+                result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                }
+            }
+        }
     }
     @objc func ActionClickToSubSuKien(sender : UITapGestureRecognizer) {
         let vc = EventViewController(data:idToanBoSuKien, idsukien: idToanBoSuKien)
@@ -110,6 +141,9 @@ class DetailEventsViewController: UIViewController {
         detailEventTableView.dataSource = self
         detailEventTableView.delegate = self
         detailEventTableView.register(cellType: DetailCommentTableViewCell.self)
+        detailEventTableView.register(cellType: EventCommentTableViewCell.self)
+        
+        userNameLabel.text = usernNameString
         
         if let url = URL(string: AppConstant.linkAvatar.asStringOrEmpty()){
             avartarImage.af.setImage(withURL: url)
@@ -327,32 +361,74 @@ class DetailEventsViewController: UIViewController {
 // MARK: - extension UITableView
 
 extension DetailEventsViewController: UITableViewDataSource {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataComment.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCommentTableViewCell", for: indexPath) as? DetailCommentTableViewCell else {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCommentTableViewCell", for: indexPath) as? DetailCommentTableViewCell else {
+//            return UITableViewCell()
+//        }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCommentTableViewCell", for: indexPath) as? EventCommentTableViewCell else {
             return UITableViewCell()
         }
-        cell.id_comment = "\(dataComment[indexPath.row].id_comment)"
-        cell.id_user_comment = "\(dataComment[indexPath.row].id_user)"
-        cell.linkAvatar = dataComment[indexPath.row].avatar_user ?? ""
-        cell.descriptionMain = dataComment[indexPath.row].noi_dung_cmt ?? ""
-        cell.thoi_gian_release = dataComment[indexPath.row].thoi_gian_release ?? ""
-        cell.noi_dung_cmt = dataComment[indexPath.row].noi_dung_cmt ?? ""
-        cell.configCell(model: dataComment[indexPath.row])
+        
+        cell.commentLabel.text = dataComment[indexPath.row].noi_dung_cmt ?? ""
+        cell.userNameLabel.text = dataComment[indexPath.row].user_name ?? ""
+        cell.timeLabel.text = dataComment[indexPath.row].thoi_gian_release ?? ""
+        
+        let avatarString = dataComment[indexPath.row].avatar_user ?? ""
+        if let url = URL(string: avatarString ?? "noavatar_fill") {
+            let processor = DownsamplingImageProcessor(size: cell.avatarImage.bounds.size)
+            |> RoundCornerImageProcessor(cornerRadius: 20)
+            
+            cell.avatarImage.kf.indicatorType = .activity
+            cell.avatarImage.kf.setImage(
+                with: url,
+                placeholder: UIImage(named: "noavatar_fill"),
+                options: [
+                    .processor(processor),
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+            {
+                result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                }
+            }
+        }
+        cell.selectionStyle = .none
+        
+//        cell.id_comment = "\(dataComment[indexPath.row].id_comment)"
+//        cell.id_user_comment = "\(dataComment[indexPath.row].id_user)"
+//        cell.linkAvatar = dataComment[indexPath.row].avatar_user ?? ""
+//        cell.descriptionMain = dataComment[indexPath.row].noi_dung_cmt ?? ""
+//        cell.thoi_gian_release = dataComment[indexPath.row].thoi_gian_release ?? ""
+//        cell.noi_dung_cmt = dataComment[indexPath.row].noi_dung_cmt ?? ""
+//        cell.configCell(model: dataComment[indexPath.row])
         return cell
     }
 }
 
 extension DetailEventsViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 74
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
+    
+    
+    
 }
 
 extension DetailEventsViewController: UITextFieldDelegate {

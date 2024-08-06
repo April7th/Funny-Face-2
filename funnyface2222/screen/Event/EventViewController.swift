@@ -23,7 +23,10 @@ class EventViewController: BaseViewController {
     var idToanBoSuKien = 0
     var bIsNam = false
     var userName = ""
+    var currentUserName = ""
     var LinkProfile = ""
+    var imageURL = ""
+    
     @objc func tapToBack() {
         self.dismiss(animated: true)
     }
@@ -535,6 +538,8 @@ extension EventViewController: UITableViewDelegate{
         }
         if indexPath.section == 1{
             let vc = DetailEventsViewController(data: data)
+            vc.usernNameString = currentUserName
+            vc.imageURL = imageURL
             vc.index = dataDetail[indexPath.row].so_thu_tu_su_kien ?? 1
             print( dataDetail[indexPath.row].so_thu_tu_su_kien ?? 1)
             vc.dataDetail = dataDetail[indexPath.row]
