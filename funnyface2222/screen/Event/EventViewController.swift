@@ -14,6 +14,8 @@ class EventViewController: BaseViewController {
     @IBOutlet weak var buttonSearch: UIButton!
     @IBOutlet weak var buttonNextSearch: UIButton!
     @IBOutlet weak var buttonBack: UIButton!
+    @IBOutlet weak var titleLabel:UILabel!
+    @IBOutlet weak var backToViewButton: UIButton!
 
     var timeEnd : Date?
     var header : HeaderView?
@@ -128,6 +130,9 @@ class EventViewController: BaseViewController {
 //        buttonSearch.setTitle("", for: .normal)
 //        buttonNextSearch.setTitle("", for: .normal)
 //        buttonBack.setTitle("", for: .normal)
+        
+        titleLabel.font = .quickSandBold(size: 20)
+        backToViewButton.setCustomFontForAllState(name: quicksandSemiBold, size: 16)
     }
     
     @IBAction func backToView(_ sender: Any){

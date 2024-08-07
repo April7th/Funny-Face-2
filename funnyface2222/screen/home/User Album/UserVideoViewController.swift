@@ -1,66 +1,52 @@
 //
-//  albumswaped.swift
+//  UserVideoViewController.swift
 //  funnyface2222
 //
-//  Created by quocanhppp on 23/01/2024.
+//  Created by Lê Duy Tân on 7/8/24.
 //
-
-//
-//  AlbumvideoController.swift
-//  funnyface2222
-//
-//  Created by quocanhppp on 19/01/2024.
-//
-
-//
-//  ViewMainImage.swift
-//  funnyface2222
-//
-//  Created by quocanhppp on 16/01/2024.
-//
-
 
 
 import UIKit
 import Kingfisher
 
-class albumswaped: UIViewController {
+class UserVideoViewController: UIViewController {
 
     @IBOutlet weak var cacluachonimageclv22:UICollectionView!
     @IBOutlet weak var backbtn:UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
+    var userVideo: [ResultVideoModel] = [ResultVideoModel]()
     
     
     @IBAction func BackApp(){
         self.dismiss(animated: true)
     }
     @IBAction func listCate(){
-        let refreshAlert = UIAlertController(title: "Choose list video", message: "", preferredStyle: .alert)
-
-        // Tùy chỉnh nền và màu sắc chữ
-        if let alertView = refreshAlert.view.subviews.first?.subviews.first {
-            alertView.backgroundColor = UIColor.black
-
-            // Tìm các label trong alertView và đặt màu chữ là trắng
-            for subview in alertView.subviews {
-                if let label = subview as? UILabel {
-                    label.textColor = UIColor.white
-                }
-            }
-        }
-        for index in 1...10 {
-            refreshAlert.addAction(UIAlertAction(title: "album \(index)", style: .default, handler: { (action: UIAlertAction!) in
-                
-                APIService.shared.listAllVideoSwaped(page:index){response,error in
-                    self.listTemplateVideo = response
-                    self.cacluachonimageclv22.reloadData()
-                }
-            }))
-        }
-       
-
-        present(refreshAlert, animated: true, completion: nil)
+//        let refreshAlert = UIAlertController(title: "Choose list video", message: "", preferredStyle: .alert)
+//
+//        // Tùy chỉnh nền và màu sắc chữ
+//        if let alertView = refreshAlert.view.subviews.first?.subviews.first {
+//            alertView.backgroundColor = UIColor.black
+//
+//            // Tìm các label trong alertView và đặt màu chữ là trắng
+//            for subview in alertView.subviews {
+//                if let label = subview as? UILabel {
+//                    label.textColor = UIColor.white
+//                }
+//            }
+//        }
+//        for index in 1...10 {
+//            refreshAlert.addAction(UIAlertAction(title: "album \(index)", style: .default, handler: { (action: UIAlertAction!) in
+//                
+//                APIService.shared.listAllVideoSwaped(page:index){response,error in
+//                    self.listTemplateVideo = response
+//                    self.cacluachonimageclv22.reloadData()
+//                }
+//            }))
+//        }
+//       
+//
+//        present(refreshAlert, animated: true, completion: nil)
 
     }
     @IBOutlet weak var listCategory:UIButton!
@@ -84,12 +70,23 @@ class albumswaped: UIViewController {
         print("lít dataa ")
         //print(self.listData)
         cacluachonimageclv22.register(UINib(nibName: "cellVideoSwaped", bundle: nil), forCellWithReuseIdentifier: "cellVideoSwaped")
+        print("List video is: \(listTemplateVideo)")
+        
+        
+        print("List vide: \(listTemplateVideo.count)")
+        
+        for i in 0..<listTemplateVideo.count {
+            if AppConstant.userId.asStringOrEmpty() == listTemplateVideo[i].id_user.asStringOrEmpty() {
+                userVideo.append(listTemplateVideo[i])
+            }
+        }
+        print("User video: \(userVideo.count)")
         
     }
 
 
 }
-extension albumswaped: UICollectionViewDelegate, UICollectionViewDataSource {
+extension UserVideoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
        
         return 1
@@ -97,47 +94,38 @@ extension albumswaped: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       
-       
-        return listTemplateVideo.count
+        
+        return userVideo.count
      
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetailSwapVideoVC(nibName: "DetailSwapVideoVC", bundle: nil)
         var itemLink:DetailVideoModel = DetailVideoModel()
-        itemLink.linkimg = self.listTemplateVideo[indexPath.row].link_image
-        itemLink.link_vid_swap = self.listTemplateVideo[indexPath.row].link_vid_swap
-        itemLink.noidung = self.listTemplateVideo[indexPath.row].noidung_sukien
-        itemLink.id_sukien_video = self.listTemplateVideo[indexPath.row].id_video
-        itemLink.id_video_swap = self.listTemplateVideo[indexPath.row].id_video
-        itemLink.ten_video = self.listTemplateVideo[indexPath.row].ten_su_kien
-        itemLink.idUser = self.listTemplateVideo[indexPath.row].id_user
-//            itemLink.thoigian_swap = Floatself.listTemplateVideo[indexPath.row].thoigian_taovid
-//\            itemLink.device_tao_vid = self.listTemplateVideo[indexPath.row].thoigian_taovid
-        itemLink.thoigian_sukien = self.listTemplateVideo[indexPath.row].thoigian_taosk
-        itemLink.link_video_goc = self.listTemplateVideo[indexPath.row].link_vid_swap
-        itemLink.ip_tao_vid = self.listTemplateVideo[indexPath.row].id_video
-        itemLink.link_vid_swap = self.listTemplateVideo[indexPath.row].link_vid_swap
+        itemLink.linkimg = self.userVideo[indexPath.row].link_image
+        itemLink.link_vid_swap = self.userVideo[indexPath.row].link_vid_swap
+        itemLink.noidung = self.userVideo[indexPath.row].noidung_sukien
+        itemLink.id_sukien_video = self.userVideo[indexPath.row].id_video
+        itemLink.id_video_swap = self.userVideo[indexPath.row].id_video
+        itemLink.ten_video = self.userVideo[indexPath.row].ten_su_kien
+        itemLink.idUser = self.userVideo[indexPath.row].id_user
+        itemLink.thoigian_sukien = self.userVideo[indexPath.row].thoigian_taosk
+        itemLink.link_video_goc = self.userVideo[indexPath.row].link_vid_swap
+        itemLink.ip_tao_vid = self.userVideo[indexPath.row].id_video
+        itemLink.link_vid_swap = self.userVideo[indexPath.row].link_vid_swap
         vc.itemDataSend = itemLink
         vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
         self.present(vc, animated: true, completion: nil)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
+ 
         
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cacluachonimageclv", for: indexPath) as! cacluachonimageclv
-//           // cell.labelNameCategori.text=listCategories[indexPath.row]
-//
-//
-//        cell.thanhvienimagecon.register(UINib(nibName: "thanhvienimagecon", bundle: nil), forCellWithReuseIdentifier: "thanhvienimagecon")
-//            return cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellVideoSwaped", for: indexPath) as! cellVideoSwaped
-        cell.labelTime.text = self.listTemplateVideo[indexPath.row].thoigian_swap ?? ""
-      //  cell.labelName.text = "asdfasdfasdfsdf"
+        cell.labelTime.text = self.userVideo[indexPath.row].thoigian_swap ?? ""
         cell.imageview.layer.cornerRadius = 10
         cell.imageview.layer.masksToBounds = true
-        cell.labelName.text = self.listTemplateVideo[indexPath.row].noidung_sukien ?? ""
-        let url = URL(string: self.listTemplateVideo[indexPath.row].link_image ?? "")
+        cell.labelName.text = self.userVideo[indexPath.row].noidung_sukien ?? ""
+        let url = URL(string: self.userVideo[indexPath.row].link_image ?? "")
         let processor = DownsamplingImageProcessor(size: cell.imageview.bounds.size)
                      |> RoundCornerImageProcessor(cornerRadius: 10)
         cell.imageview.kf.indicatorType = .activity
@@ -173,7 +161,7 @@ extension albumswaped: UICollectionViewDelegate, UICollectionViewDataSource {
     
 }
 
-extension albumswaped: UICollectionViewDelegateFlowLayout {
+extension UserVideoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
     }
@@ -189,9 +177,9 @@ extension albumswaped: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
             if UIDevice.current.userInterfaceIdiom == .pad{
-                return CGSize(width: (UIScreen.main.bounds.width)/3.2 - 20, height: 400)
+                return CGSize(width: (UIScreen.main.bounds.width)/2 - 10, height: 400)
             }
-        return CGSize(width: (UIScreen.main.bounds.width)/2.5-10, height: 200)
+        return CGSize(width: (UIScreen.main.bounds.width)/2-10, height: 200)
        
     }
 }

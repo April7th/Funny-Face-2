@@ -19,6 +19,8 @@
 		B735F7B42C6202B200D8EAAD /* EventCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B735F7B12C6202B200D8EAAD /* EventCommentTableViewCell.swift */; };
 		B7377FC22C5CDC28002E45B8 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */; };
 		B7377FC32C5CDC28002E45B8 /* ProfileSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */; };
+		B744BD342C63866300E4B5A9 /* UserVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B744BD332C63866300E4B5A9 /* UserVideoViewController.swift */; };
+		B744BD362C63867700E4B5A9 /* UserVideoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B744BD352C63867700E4B5A9 /* UserVideoViewController.storyboard */; };
 		B748239C2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B748239B2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib */; };
 		B748239D2C60E0E600DE3C34 /* CommentNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B748239A2C60E0E600DE3C34 /* CommentNotificationTableViewCell.swift */; };
 		B7552F552C5D19DA0017722F /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7552F542C5D19DA0017722F /* EditProfileViewController.xib */; };
@@ -236,6 +238,8 @@
 		B735F7B22C6202B200D8EAAD /* EventCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCommentTableViewCell.xib; sourceTree = "<group>"; };
 		B7377FC02C5CDC28002E45B8 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		B7377FC12C5CDC28002E45B8 /* ProfileSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingViewController.xib; sourceTree = "<group>"; };
+		B744BD332C63866300E4B5A9 /* UserVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVideoViewController.swift; sourceTree = "<group>"; };
+		B744BD352C63867700E4B5A9 /* UserVideoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserVideoViewController.storyboard; sourceTree = "<group>"; };
 		B748239A2C60E0E600DE3C34 /* CommentNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNotificationTableViewCell.swift; sourceTree = "<group>"; };
 		B748239B2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentNotificationTableViewCell.xib; sourceTree = "<group>"; };
 		B7552F532C5D19DA0017722F /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -510,6 +514,15 @@
 			path = QuickSand;
 			sourceTree = "<group>";
 		};
+		B76E0B282C63741D000E1D12 /* User Album */ = {
+			isa = PBXGroup;
+			children = (
+				B744BD332C63866300E4B5A9 /* UserVideoViewController.swift */,
+				B744BD352C63867700E4B5A9 /* UserVideoViewController.storyboard */,
+			);
+			path = "User Album";
+			sourceTree = "<group>";
+		};
 		DFBD2FB375712023C3976169 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +578,7 @@
 				E68D67362B5FCC0A00E410FC /* phanduoicell.swift */,
 				E68D67372B5FCC0A00E410FC /* phanduoicell.xib */,
 				E68D673A2B5FCC7700E410FC /* viptestmain.swift */,
+				B76E0B282C63741D000E1D12 /* User Album */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1351,6 +1365,7 @@
 				E6C6E9BB2B57D2100055D260 /* SwapImageAlbum.xib in Resources */,
 				B748239C2C60E0E600DE3C34 /* CommentNotificationTableViewCell.xib in Resources */,
 				E6C6E99B2B565B7A0055D260 /* cacluachonimageclv.xib in Resources */,
+				B744BD362C63867700E4B5A9 /* UserVideoViewController.storyboard in Resources */,
 				B710440D2C53B5340093FDFE /* Quicksand-Medium.ttf in Resources */,
 				E69E059C2B52EF8100E9D2DB /* SwapVideoDetailVC.xib in Resources */,
 				E66C93D92B4E559600B74491 /* tieudeclv.xib in Resources */,
@@ -1553,6 +1568,7 @@
 				E66C93E82B4E559600B74491 /* ReportCommentVC.swift in Sources */,
 				B71044112C53BB360093FDFE /* Fonts.swift in Sources */,
 				E66C940B2B4E559600B74491 /* ControlPanel.swift in Sources */,
+				B744BD342C63866300E4B5A9 /* UserVideoViewController.swift in Sources */,
 				E66C934F2B4E558700B74491 /* ServiceConstant.swift in Sources */,
 				E67DF4632B551FD80074D573 /* StoryboardPageTabMenuViewController.swift in Sources */,
 				E67DF4672B5520B70074D573 /* mhtestViewController.swift in Sources */,

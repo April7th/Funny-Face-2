@@ -43,6 +43,9 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var goToProfileButton: UIButton!
 
+    var listTemplateVideo : [ResultVideoModel] = [ResultVideoModel]()
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -81,24 +84,50 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
         
         searchButton.setTitle("", for: .normal)
         goToProfileButton.setTitle("", for: .normal)
+        
+        
+        for index in 0...9 {
+            APIService.shared.listAllVideoSwaped(page: index) { response, error in
+                self.listTemplateVideo.append(contentsOf: response)
+            }
+        }
 
         
     }
-    
+    var allVideo : [ResultVideoModel] = [ResultVideoModel]()
+
     @IBAction func clickToVideo(_ sender: Any) {
+//        if let parentVC = findParentViewController(of: UIViewController.self) {
+//            let storyboard = UIStoryboard(name: "HomeStaboad", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "albumswaped") as! albumswaped
+//            
+//            vc.modalPresentationStyle = .fullScreen
+//            
+//            
+//            APIService.shared.listAllVideoSwaped(page:1){response,error in
+//                vc.listTemplateVideo = response
+//                print("lisssss dataa: \(response)")
+//                parentVC.present(vc, animated: true, completion: nil)
+//                //self.cacluachon.reloadData()
+//            }
+//        }
         if let parentVC = findParentViewController(of: UIViewController.self) {
-            let storyboard = UIStoryboard(name: "HomeStaboad", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "albumswaped") as! albumswaped
+            let storyboard = UIStoryboard(name: "UserVideoViewController", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "UserVideoViewController") as! UserVideoViewController
             
             vc.modalPresentationStyle = .fullScreen
-            print("lisssss dataa")
-            
-            APIService.shared.listAllVideoSwaped(page:1){response,error in
-                vc.listTemplateVideo = response
-                parentVC.present(vc, animated: true, completion: nil)
-                //self.cacluachon.reloadData()
-            }
+            vc.listTemplateVideo = listTemplateVideo
+            parentVC.present(vc, animated: true, completion: nil)
+            //            APIService.shared.listAllVideoSwaped(page:1){response,error in
+            //                vc.listTemplateVideo = response
+            //                print("lisssss dataa: \(response)")
+            //
+            //                parentVC.present(vc, animated: true, completion: nil)
+            //                //self.cacluachon.reloadData()
+            //            }
         }
+        
+
 
     }
     

@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventViewController" customModule="funnyface2222" customModuleProvider="target">
             <connections>
+                <outlet property="backToViewButton" destination="WWa-UR-6Lu" id="Jg8-Eb-B9Q"/>
                 <outlet property="backgroundView" destination="SMo-yZ-w8d" id="nvq-yX-coq"/>
                 <outlet property="buttonBack" destination="egu-jX-zgV" id="Y5a-iW-qbw"/>
                 <outlet property="buttonNextSearch" destination="Uld-o0-SEO" id="lMH-mb-pDO"/>
@@ -23,6 +24,7 @@
                 <outlet property="detailTableView" destination="LhI-XV-goF" id="6h2-Xu-uAS"/>
                 <outlet property="keyboardScrollView" destination="Nad-xk-fB6" id="uQI-y4-vRO"/>
                 <outlet property="linkWebImage" destination="bh2-C2-lXK" id="obU-5j-VAZ"/>
+                <outlet property="titleLabel" destination="XNJ-88-IoO" id="g23-Fp-KjY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

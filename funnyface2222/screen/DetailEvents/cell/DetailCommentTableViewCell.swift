@@ -153,7 +153,7 @@ class DetailCommentTableViewCell: UITableViewCell {
             imageAvatar.kf.indicatorType = .activity
             imageAvatar.kf.setImage(
                 with: url,
-                placeholder: UIImage(named: "hoapro"),
+                placeholder: UIImage(named: "noavatar_fill"),
                 options: [
                     .processor(processor),
                     .scaleFactor(UIScreen.main.scale),

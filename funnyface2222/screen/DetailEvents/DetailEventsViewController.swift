@@ -43,6 +43,8 @@ class DetailEventsViewController: UIViewController {
     @IBOutlet weak var avartarImage: UIImageView!
     @IBOutlet weak var detailEventTableView: UITableView!
     @IBOutlet weak var buttonEnter: UIButton!
+    @IBOutlet weak var commentView: UIView!
+    
     init(data: Int ) {
         self.idToanBoSuKien = data
         super.init(nibName: nil, bundle: nil)
@@ -98,6 +100,17 @@ class DetailEventsViewController: UIViewController {
                 }
             }
         }
+        
+        commentTextField.attributedPlaceholder = NSAttributedString(
+            string: "Comment",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5), NSAttributedString.Key.font: UIFont.quickSandRegular(size: 12)]
+        )
+        commentTextField.textColor = .white
+        commentView.layer.cornerRadius = 12
+        commentView.layer.masksToBounds = true
+        
+        buttonEnter.isHidden = true
+        
     }
     @objc func ActionClickToSubSuKien(sender : UITapGestureRecognizer) {
         let vc = EventViewController(data:idToanBoSuKien, idsukien: idToanBoSuKien)
@@ -105,6 +118,8 @@ class DetailEventsViewController: UIViewController {
         vc.idToanBoSuKien = idToanBoSuKien
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
     
     func reloadBlockAccount(DataXoa:String){
         ListIDUser_Block.removeAll()
@@ -144,10 +159,40 @@ class DetailEventsViewController: UIViewController {
         detailEventTableView.register(cellType: EventCommentTableViewCell.self)
         
         userNameLabel.text = usernNameString
+        userNameLabel.font = .quickSandBold(size: 14)
         
-        if let url = URL(string: AppConstant.linkAvatar.asStringOrEmpty()){
-            avartarImage.af.setImage(withURL: url)
+//        if let url = URL(string: AppConstant.linkAvatar.asStringOrEmpty()){
+//            avartarImage.af.setImage(withURL: url)
+//        }
+//        
+        if let url = URL(string: imageURL ?? "") {
+            
+            let processor = DownsamplingImageProcessor(size: self.avartarImage.bounds.size)
+            |> RoundCornerImageProcessor(cornerRadius: 50)
+            self.avartarImage.kf.indicatorType = .activity
+            self.avartarImage.backgroundColor = .clear
+            self.avartarImage.contentMode = .scaleAspectFill
+            self.avartarImage.kf.setImage(
+                with: url,
+                placeholder: UIImage(named: "placeholderImage"),
+                options: [
+                    .processor(processor),
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+            {
+                result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                }
+            }
         }
+
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         detailImage.addGestureRecognizer(tapGesture)
@@ -225,7 +270,9 @@ class DetailEventsViewController: UIViewController {
     
     
     @IBAction func postCommentBtn(_ sender: Any) {
-      enterComments()
+        enterComments()
+        buttonEnter.isHidden = false
+        
     }
     
     private func enterComments() {
