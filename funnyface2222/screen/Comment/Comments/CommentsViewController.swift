@@ -239,11 +239,13 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
                         if let idUser: String = KeychainWrapper.standard.string(forKey: idUserNumber){
                             var kiemtra = 0
                             for itemDataComment in dataNewComment{
-                                if (itemDataComment.noi_dung_cmt)?.urlEncoded == idUser{
-                                    dataNewComment.remove(at: kiemtra)
-                                    kiemtra = kiemtra - 1
-                                }else{
-                                    kiemtra = kiemtra + 1
+                                if kiemtra >= 0 {
+                                    if (itemDataComment.noi_dung_cmt)?.urlEncoded == idUser{
+                                        dataNewComment.remove(at: kiemtra)
+                                        kiemtra = kiemtra - 1
+                                    }else{
+                                        kiemtra = kiemtra + 1
+                                    }
                                 }
                             }
                         }
@@ -259,6 +261,7 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
     @IBAction func nextPageButton(_ sender: Any) {
         indexSelectPage += 1
         scrollToPageSellected()
+        getComment(page: indexSelectPage)
         collectionView.reloadData()
         DispatchQueue.main.async {
             self.commentTableView.reloadData()
@@ -269,6 +272,7 @@ class CommentsViewController: UIViewController , SETabItemProvider,UITextFieldDe
     @IBAction func previousPageButton(_ sender: Any) {
         indexSelectPage -= 1
         scrollToPageSellected()
+        getComment(page: indexSelectPage)
         commentTableView.reloadData()
         collectionView.reloadData()
         DispatchQueue.main.async {
@@ -354,11 +358,20 @@ extension CommentsViewController : UITableViewDataSource {
 extension CommentsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if dataComment.count > indexPath.row {
+//            let vc = DetailEventsViewController(data: dataComment[indexPath.row].id_toan_bo_su_kien ?? 0 )
+//            vc.idToanBoSuKien = dataComment[indexPath.row].id_toan_bo_su_kien ?? 0
+//            vc.index = dataComment[indexPath.row].so_thu_tu_su_kien ?? 0
+//            self.navigationController?.pushViewController(vc, animated: false)
             let vc = DetailEventsViewController(data: dataComment[indexPath.row].id_toan_bo_su_kien ?? 0 )
             vc.idToanBoSuKien = dataComment[indexPath.row].id_toan_bo_su_kien ?? 0
             vc.index = dataComment[indexPath.row].so_thu_tu_su_kien ?? 0
-            self.navigationController?.pushViewController(vc, animated: false)
+            vc.usernNameString = dataComment[indexPath.row].user_name ?? ""
+            vc.modalPresentationStyle = .fullScreen
+            
+            self.present(vc, animated: true, completion: nil)
         }
+        
+        
        
     }
     

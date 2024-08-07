@@ -22,31 +22,31 @@ class UserVideoViewController: UIViewController {
         self.dismiss(animated: true)
     }
     @IBAction func listCate(){
-//        let refreshAlert = UIAlertController(title: "Choose list video", message: "", preferredStyle: .alert)
-//
-//        // Tùy chỉnh nền và màu sắc chữ
-//        if let alertView = refreshAlert.view.subviews.first?.subviews.first {
-//            alertView.backgroundColor = UIColor.black
-//
-//            // Tìm các label trong alertView và đặt màu chữ là trắng
-//            for subview in alertView.subviews {
-//                if let label = subview as? UILabel {
-//                    label.textColor = UIColor.white
-//                }
-//            }
-//        }
-//        for index in 1...10 {
-//            refreshAlert.addAction(UIAlertAction(title: "album \(index)", style: .default, handler: { (action: UIAlertAction!) in
-//                
-//                APIService.shared.listAllVideoSwaped(page:index){response,error in
-//                    self.listTemplateVideo = response
-//                    self.cacluachonimageclv22.reloadData()
-//                }
-//            }))
-//        }
-//       
-//
-//        present(refreshAlert, animated: true, completion: nil)
+        let refreshAlert = UIAlertController(title: "Choose list video", message: "", preferredStyle: .alert)
+
+        // Tùy chỉnh nền và màu sắc chữ
+        if let alertView = refreshAlert.view.subviews.first?.subviews.first {
+            alertView.backgroundColor = UIColor.black
+
+            // Tìm các label trong alertView và đặt màu chữ là trắng
+            for subview in alertView.subviews {
+                if let label = subview as? UILabel {
+                    label.textColor = UIColor.white
+                }
+            }
+        }
+        for index in 1...10 {
+            refreshAlert.addAction(UIAlertAction(title: "album \(index)", style: .default, handler: { (action: UIAlertAction!) in
+                
+                APIService.shared.listAllVideoSwaped(page:index){response,error in
+                    self.userVideo = response
+                    self.cacluachonimageclv22.reloadData()
+                }
+            }))
+        }
+       
+
+        present(refreshAlert, animated: true, completion: nil)
 
     }
     @IBOutlet weak var listCategory:UIButton!
@@ -177,12 +177,11 @@ extension UserVideoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
             if UIDevice.current.userInterfaceIdiom == .pad{
-                return CGSize(width: (UIScreen.main.bounds.width)/2 - 10, height: 400)
+                return CGSize(width: (UIScreen.main.bounds.width)/3.2 - 20, height: 400)
             }
-        return CGSize(width: (UIScreen.main.bounds.width)/2-10, height: 200)
+        return CGSize(width: (UIScreen.main.bounds.width)/2.5-10, height: 200)
        
-    }
-}
+    }}
 
 
 

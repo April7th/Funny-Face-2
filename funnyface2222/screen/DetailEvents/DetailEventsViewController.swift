@@ -55,12 +55,14 @@ class DetailEventsViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        callApiProfile()
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameDetailLabel.textColor = UIColor.black
         self.titleLabel.textColor = UIColor.white
+        self.titleLabel.font = .quickSandBold(size: 20)
         self.descriptionLabel.textColor = UIColor.black
         self.commentTextField.textColor = UIColor.black
         setupUI()
@@ -74,32 +76,32 @@ class DetailEventsViewController: UIViewController {
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.ActionClickToSubSuKien))
         self.viewDetailSuKien.addGestureRecognizer(gesture)
         
-        if let url = URL(string: imageURL ?? "") {
-            
-            let processor = DownsamplingImageProcessor(size: self.avatarImage.bounds.size)
-            |> RoundCornerImageProcessor(cornerRadius: 50)
-            self.avatarImage.kf.indicatorType = .activity
-            self.avatarImage.backgroundColor = .clear
-            self.avatarImage.contentMode = .scaleAspectFill
-            self.avatarImage.kf.setImage(
-                with: url,
-                placeholder: UIImage(named: "placeholderImage"),
-                options: [
-                    .processor(processor),
-                    .scaleFactor(UIScreen.main.scale),
-                    .transition(.fade(1)),
-                    .cacheOriginalImage
-                ])
-            {
-                result in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                }
-            }
-        }
+//        if let url = URL(string: imageURL ?? "") {
+//            
+//            let processor = DownsamplingImageProcessor(size: self.avatarImage.bounds.size)
+//            |> RoundCornerImageProcessor(cornerRadius: 50)
+//            self.avatarImage.kf.indicatorType = .activity
+//            self.avatarImage.backgroundColor = .clear
+//            self.avatarImage.contentMode = .scaleAspectFill
+//            self.avatarImage.kf.setImage(
+//                with: url,
+//                placeholder: UIImage(named: "placeholderImage"),
+//                options: [
+//                    .processor(processor),
+//                    .scaleFactor(UIScreen.main.scale),
+//                    .transition(.fade(1)),
+//                    .cacheOriginalImage
+//                ])
+//            {
+//                result in
+//                switch result {
+//                case .success(let value):
+//                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                case .failure(let error):
+//                    print("Job failed: \(error.localizedDescription)")
+//                }
+//            }
+//        }
         
         commentTextField.attributedPlaceholder = NSAttributedString(
             string: "Comment",
@@ -109,7 +111,9 @@ class DetailEventsViewController: UIViewController {
         commentView.layer.cornerRadius = 12
         commentView.layer.masksToBounds = true
         
-        buttonEnter.isHidden = true
+        
+        print("user id: \(AppConstant.userId.asStringOrEmpty())")
+        print("event user id: \(dataDetail?.id_user.asStringOrEmpty())")
         
     }
     @objc func ActionClickToSubSuKien(sender : UITapGestureRecognizer) {
@@ -224,6 +228,7 @@ class DetailEventsViewController: UIViewController {
                     self.nameDetailLabel.text = data.ten_su_kien.asStringOrEmpty()
                     self.countComment.setTitle("\(data.count_comment ?? 0)", for: .normal)
                     self.countView.setTitle("\(data.count_view ?? 0)", for: .normal)
+                    
                 }
             }
         }
@@ -234,6 +239,44 @@ class DetailEventsViewController: UIViewController {
             if let success = result {
                 self.dataIp = [success]
                 self.detailEventTableView.reloadData()
+            }
+        }
+    }
+    
+    func callApiProfile() {
+        APIService.shared.getProfile(user: self.dataDetail?.id_user ?? 1 ) { result, error in
+            if let success = result {
+                if let idUser = success.id_user{
+                    self.userNameLabel.text = success.user_name ?? ""
+                    
+                    
+                    let escapedString = success.link_avatar?.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
+                    if let url = URL(string: escapedString ?? "") {
+                        let processor = DownsamplingImageProcessor(size: self.avatarImage.bounds.size)
+                        |> RoundCornerImageProcessor(cornerRadius: 50)
+                        self.avatarImage.kf.indicatorType = .activity
+                        self.avatarImage.backgroundColor = .clear
+                        self.avatarImage.contentMode = .scaleAspectFill
+                        self.avatarImage.kf.setImage(
+                            with: url,
+                            placeholder: UIImage(named: "noavatar_fill"),
+                            options: [
+                                .processor(processor),
+                                .scaleFactor(UIScreen.main.scale),
+                                .transition(.fade(1)),
+                                .cacheOriginalImage
+                            ])
+                        {
+                            result in
+                            switch result {
+                            case .success(let value):
+                                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                            case .failure(let error):
+                                print("Job failed: \(error.localizedDescription)")
+                            }
+                        }
+                    }
+                }
             }
         }
     }

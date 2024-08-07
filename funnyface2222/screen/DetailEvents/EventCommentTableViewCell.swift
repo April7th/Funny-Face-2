@@ -26,9 +26,9 @@ class EventCommentTableViewCell: UITableViewCell {
         userNameLabel.font = .quickSandBold(size: 12)
         userNameLabel.textColor = .white
         commentLabel.textColor = UIColor(hex: "#bfbfbf")
-        commentLabel.font = .quickSandRegular(size: 12)
+        commentLabel.font = .quickSandSemiBold(size: 12)
         timeLabel.font = .quickSandRegular(size: 12)
-        timeLabel.textColor = .white
+        timeLabel.textColor = .white.withAlphaComponent(0.5)
 
         
     }

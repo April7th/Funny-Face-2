@@ -500,6 +500,7 @@ extension EventViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.configCellDetail(model: dataDetail[indexPath.row])
+            
             return cell
         } else if item.id_template == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "Template2TBVCell", for: indexPath) as? Template2TBVCell else {
@@ -588,6 +589,6 @@ extension String{
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = format
-        return dateFormatter.date(from: self)!
+        return dateFormatter.date(from: self) ?? Date()
     }
 }
