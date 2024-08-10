@@ -16,21 +16,26 @@ class testViewController: UIViewController,SETabItemProvider {
     var dataList_All: [Sukien] = []
     var dataDetail: [EventModel] = []
     var dataComment : [DataComment] = []
+    var userId: Int = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
+
+    var dataUserEvent: [Sukien] = []
+
     
     @IBOutlet weak var notiLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var commentNotiTableView: UITableView!
 
-    
-   
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        callAPIUserEvent()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        callAllComment()
         setupUI()
-        callAPIgetdataComment()
+        
     }
     
     private func setupUI() {
@@ -43,8 +48,9 @@ class testViewController: UIViewController,SETabItemProvider {
         }
         
     }
-    func callAPIgetdataComment() {
-        APIService.shared.getPageComment(page: 1, idUser: String(AppConstant.userId ?? 0)) { result, error in
+    
+    func callAPIgetdataComment(page: Int) {
+        APIService.shared.getPageComment(page: page, idUser: String(AppConstant.userId ?? 0)) { result, error in
             if let success = result{
                 self.dataComment = success.comment
 //                self.maxPage = 1
@@ -55,16 +61,23 @@ class testViewController: UIViewController,SETabItemProvider {
                         if let idUser: String = KeychainWrapper.standard.string(forKey: idUserNumber){
                             var kiemtra = 0
                             for itemDataComment in dataNewComment{
-                                if (itemDataComment.noi_dung_cmt)?.urlEncoded == idUser{
-                                    dataNewComment.remove(at: kiemtra)
-                                    kiemtra = kiemtra - 1
-                                }else{
-                                    kiemtra = kiemtra + 1
+                                if kiemtra >= 0 {
+                                    if (itemDataComment.noi_dung_cmt)?.urlEncoded == idUser{
+                                        dataNewComment.remove(at: kiemtra)
+                                        kiemtra = kiemtra - 1
+                                    }else{
+                                        kiemtra = kiemtra + 1
+                                    }
                                 }
+                                
                             }
                         }
                     }
-                    self.dataComment = dataNewComment
+
+                    self.dataComment.append(contentsOf: dataNewComment)
+                    print("data: \(self.dataComment.count)")
+                    print("data new: \(dataNewComment.count)")
+
                 }
                 self.commentNotiTableView.reloadData()
                 
@@ -72,12 +85,31 @@ class testViewController: UIViewController,SETabItemProvider {
         }
     }
     
+    private func callAllComment() {
+        for i in 1...2 {
+            callAPIgetdataComment(page: i)
+        }
+//        callAPIgetdataComment(page: 1)
+    }
+    
+    func callAPIUserEvent() {
+        APIService.shared.getUserEvent(user:  self.userId) { result, error in
+            if let success = result {
+                let data = success.list_sukien.compactMap {$0.sukien.first }
+                self.dataUserEvent = data
+                
+            }
+        }
+    }
+    
+    
    
 
 }
 
 extension testViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Data comment count: \(dataComment.count)")
         return dataComment.count
 
     }
@@ -86,16 +118,20 @@ extension testViewController : UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentNotificationTableViewCell", for: indexPath) as? CommentNotificationTableViewCell else {
             return UITableViewCell()
         }
+        
         let linkImagePro = dataComment[indexPath.row].avatar_user?.replacingOccurrences(of: "/var/www/build_futurelove", with: "https://futurelove.online", options: .literal, range: nil)
         cell.id_comment = "\(dataComment[indexPath.row].id_comment)"
         cell.id_user_comment = "\(dataComment[indexPath.row].id_user)"
+        cell.thoi_gian_release = dataComment[indexPath.row].thoi_gian_release ?? ""
         cell.linkAvatar = linkImagePro ?? ""
         cell.configCellComment(model: dataComment[indexPath.row])
+        cell.selectionStyle = .none
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 70
     }
     
    

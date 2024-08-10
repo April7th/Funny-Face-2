@@ -17,7 +17,7 @@ class CommentNotificationTableViewCell: UITableViewCell {
     
     
     var id_comment:String = ""
-    
+    var thoi_gian_release:String = ""
     var id_user_comment:String = ""
     var linkAvatar:String = ""
     

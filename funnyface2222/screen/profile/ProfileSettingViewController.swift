@@ -132,9 +132,6 @@ class ProfileSettingViewController: UIViewController{
                     self.eventCountLabel.text = success.count_sukien?.toString()
                     self.commentCountLabel.text = success.count_comment?.toString()
                     self.viewCountLabel.text = (success.count_view ?? 0).toString()
-//                    self.ipRegisterLabel.text = "Ip Register: " + (success.ip_register ?? "")
-//                    self.deviceRegisterLabel.text = "Device Register: " + (success.device_register ?? "")
-//                    self.emailLabel.text = success.email ?? ""
                     let escapedString = success.link_avatar?.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
                     if let url = URL(string: escapedString ?? "") {
                         let processor = DownsamplingImageProcessor(size: self.avatarImage.bounds.size)

@@ -46,13 +46,6 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
     var listTemplateVideo : [ResultVideoModel] = [ResultVideoModel]()
 
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-
-   
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -118,13 +111,6 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
             vc.modalPresentationStyle = .fullScreen
             vc.listTemplateVideo = listTemplateVideo
             parentVC.present(vc, animated: true, completion: nil)
-            //            APIService.shared.listAllVideoSwaped(page:1){response,error in
-            //                vc.listTemplateVideo = response
-            //                print("lisssss dataa: \(response)")
-            //
-            //                parentVC.present(vc, animated: true, completion: nil)
-            //                //self.cacluachon.reloadData()
-            //            }
         }
         
 
@@ -152,7 +138,6 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
         //        self.navigationController?.pushViewController(loginView(nibName: "loginView", bundle: nil), animated: true)
         
         if AppConstant.userId == nil {
-            //                        self.navigationController?.pushViewController(LoginViewController(nibName: "LoginViewController", bundle: nil), animated: true)
             let storyboard = UIStoryboard(name: "login", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "loginView") as! loginView
             vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
@@ -169,12 +154,6 @@ class ListToProfileViewController: UIViewController, SETabItemProvider {
             if let success = result {
                 if let idUser = success.id_user{
                     self.nameLabel.text = success.user_name ?? ""
-//                    self.countEventLabel.text = success.count_sukien?.toString()
-//                    self.countCommentLabel.text = success.count_comment?.toString()
-//                    self.countViewLabel.text = (success.count_view ?? 0).toString()
-//                    self.ipRegisterLabel.text = "Ip Register: " + (success.ip_register ?? "")
-//                    self.deviceRegisterLabel.text = "Device Register: " + (success.device_register ?? "")
-//                    self.emailLabel.text = success.email ?? ""
                     let escapedString = success.link_avatar?.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
                     if let url = URL(string: escapedString ?? "") {
                         let processor = DownsamplingImageProcessor(size: self.avatarImage.bounds.size)

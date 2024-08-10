@@ -45,6 +45,7 @@ class TabbarViewController: SETabViewController {
         ProfileViewController().userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
 //        EditProfileViewController().userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
         EventView().userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
+        testViewController().userId = Int(AppConstant.userId.asStringOrEmpty()) ?? 0
         
         return [
             controller,

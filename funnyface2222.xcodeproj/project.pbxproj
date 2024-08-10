@@ -839,7 +839,6 @@
 			children = (
 				E6BDA2152B68D42400B1B6FD /* newevent */,
 				E66706A12B678E3A00CDF9EC /* event */,
-				E66C93602B4E559600B74491 /* mhchinh.storyboard */,
 				E67DF4692B553AD10074D573 /* Imagess */,
 				E67DF4682B553AC40074D573 /* Video */,
 				E67DF4612B551FB10074D573 /* selectcontroller */,
@@ -1130,6 +1129,7 @@
 		E67DF4612B551FB10074D573 /* selectcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				E66C93602B4E559600B74491 /* mhchinh.storyboard */,
 				E67DF4622B551FD80074D573 /* StoryboardPageTabMenuViewController.swift */,
 				E67DF4642B5520410074D573 /* testViewController.swift */,
 				E67DF4662B5520B70074D573 /* mhtestViewController.swift */,
