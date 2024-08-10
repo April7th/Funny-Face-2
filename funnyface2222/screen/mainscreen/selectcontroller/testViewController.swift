@@ -86,10 +86,10 @@ class testViewController: UIViewController,SETabItemProvider {
     }
     
     private func callAllComment() {
-        for i in 1...2 {
-            callAPIgetdataComment(page: i)
-        }
-//        callAPIgetdataComment(page: 1)
+//        for i in 1...2 {
+//            callAPIgetdataComment(page: i)
+//        }
+        callAPIgetdataComment(page: 1)
     }
     
     func callAPIUserEvent() {
